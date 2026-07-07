@@ -278,7 +278,7 @@ function renderSocialsScreen(activeKey = null) {
     `).join('');
 
     // Extra locked-looking tiles so the grid reads as "more to come", same as the in-game bestiary
-    const lockedSlots = Array(3).fill('<div class="enemy-grid-locked">?</div>').join('');
+    const lockedSlots = Array(22).fill('<div class="enemy-grid-locked">?</div>').join('');
 
     subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_enemy.svg" style="width: 16px; height: 16px;" alt="enemy icon">`;
     subTitleText.textContent = 'Socials';
