@@ -12,19 +12,22 @@ buttons.forEach(button => {
 const subTitleText = document.getElementById('sub-title-text');
 const subIcon = document.getElementById('sub-icon');
 const screenContent = document.getElementById('screen-content');
+const leftPane = document.querySelector('.left-pane');
 
-// Snapshot the original Tip of the Day markup before anything overwrites it
+// Snapshot the original Tip of the Day markup and left-pane nav before anything overwrites them
 const tipOfDayHTML = screenContent.innerHTML;
-
-function resetToTipOfDay() {
-    subIcon.textContent = '✓';
-    subTitleText.textContent = 'Tip of the Day';
-    screenContent.classList.remove('top-anchored');
-    screenContent.innerHTML = tipOfDayHTML;
-}
+const leftPaneDefaultHTML = leftPane.innerHTML;
 
 document.getElementById('main-close-btn').addEventListener('click', () => location.reload());
-document.getElementById('sub-close-btn').addEventListener('click', resetToTipOfDay);
+document.getElementById('sub-close-btn').addEventListener('click', () => location.reload());
+
+// --- Logo click toggle: swap between the custom text logo and the real image ---
+// Delegated on the left-pane container itself (rather than .brand-area directly)
+// since the weapons screen replaces the left-pane's innerHTML entirely.
+leftPane.addEventListener('click', (e) => {
+    const brand = e.target.closest('.brand-area');
+    if (brand) brand.classList.toggle('showing-image');
+});
 
 const enemyData = {
     artfight: {
@@ -94,4 +97,239 @@ function renderEnemyDetail(key) {
 const enemiesButton = document.querySelector('.os-button[data-target="enemies"]');
 if (enemiesButton) {
     enemiesButton.addEventListener('click', () => renderEnemyScreen());
+}
+
+const weaponCategories = {
+    revolver: {
+        name: 'Revolver',
+        variants: [
+            { name: 'PIERCER', image: 'assets/weapons/SingleRevolver.webp', altImage: 'assets/weapons/RevolverAltSingle.webp' },
+            { name: 'MARKSMAN', image: 'assets/weapons/RevolverSharp.webp', altImage: 'assets/weapons/RevolverAltSharp.webp' },
+            { name: 'SHARPSHOOTER', image: 'assets/weapons/RevolverSpecial.webp', altImage: 'assets/weapons/RevolverAltSpecial.webp' }
+        ]
+    },
+    shotgun: {
+        name: 'Shotgun',
+        variants: [
+            { name: 'CORE EJECT', image: 'assets/weapons/Standard_Core_Eject_Shotgun.webp', altImage: 'assets/weapons/Alternate_Core_Eject_Shotgun.webp' },
+            { name: 'PUMP CHARGE', image: 'assets/weapons/Shotgun1.webp', altImage: 'assets/weapons/Alternate_Pump_Charge_Shotgun.webp' },
+            { name: 'SAWED-ON', image: 'assets/weapons/Standard_Sawed-On_Shotgun.webp', altImage: 'assets/weapons/Alternate_Sawed-On_Shotgun.webp' }
+        ]
+    },
+    nailgun: {
+        name: 'Nailgun',
+        variants: [
+            { name: 'ATTRACTOR', image: 'assets/weapons/Nailgun2.webp', altImage: 'assets/weapons/SawbladeLauncher.webp' },
+            { name: 'OVERHEAT', image: 'assets/weapons/NailgunOverheat.webp', altImage: 'assets/weapons/SawbladeLauncherOverheat.webp' },
+            { name: 'JUMPSTART', image: 'assets/weapons/Standard_JumpStart_Nailgun.webp', altImage: 'assets/weapons/Alternate_JumpStart_Nailgun.webp' }
+        ]
+    },
+    railcannon: {
+        name: 'Railcannon',
+        variants: [
+            { name: 'ELECTRIC', image: 'assets/weapons/Railcannonelectric.webp' },
+            { name: 'MALICIOUS', image: 'assets/weapons/Railcannonmalicious.webp' },
+            { name: 'SCREWDRIVER', image: 'assets/weapons/Railcannonscrew.webp' }
+        ]
+    },
+    rocketlauncher: {
+        name: 'Rocket Launcher',
+        variants: [
+            { name: 'FIRESTARTER', image: 'assets/weapons/Firestarter_Rocket_Launcher.webp' },
+            { name: 'FREEZEFRAME', image: 'assets/weapons/RocketLauncher.webp' },
+            { name: 'SAWBLADE LAUNCHER', image: 'assets/weapons/SawbladeLauncher.webp' }
+        ]
+    },
+    arms: {
+        name: 'Arms',
+        variants: [
+            { name: 'FEEDBACKER', image: 'assets/weapons/FeedbackerHUDNew.webp' },
+            { name: 'KNUCKLEBLASTER', image: 'assets/weapons/KnuckleblasterHUDNew.webp' },
+            { name: 'WHIPLASH', image: 'assets/weapons/WhiplashHUDNew.webp' }
+        ]
+    }
+};
+
+const weaponNumbering = {};
+const weaponRowStatus = {};
+const statusStates = ['equipped', 'alternate', 'unequipped'];
+const statusLabels = {
+    equipped: 'Equipped',
+    alternate: 'Alternate',
+    unequipped: 'Unequipped'
+};
+
+Object.keys(weaponCategories).forEach(key => {
+    weaponNumbering[key] = [1, 2, 3]; // weaponNumbering[key][rowPosition] = displayed number
+    weaponRowStatus[key] = ['equipped', 'equipped', 'equipped']; // starting point only, not exclusive
+});
+
+let activeWeaponCategory = 'revolver';
+
+function resetToTipOfDay() {
+    subIcon.textContent = '✓';
+    subTitleText.textContent = 'Tip of the Day';
+    screenContent.classList.remove('top-anchored', 'weapons-mode');
+    screenContent.innerHTML = tipOfDayHTML;
+
+    // Restore default nav panel and clear the weapons window styling
+    leftPane.innerHTML = leftPaneDefaultHTML;
+    leftPane.classList.remove('weapons-mode');
+}
+
+function renderWeaponCategoryNav(activeKey) {
+    const items = Object.keys(weaponCategories).map(key => `
+        <button class="os-button weapon-category-btn${key === activeKey ? ' active-tab' : ''}" data-category="${key}">
+            ${weaponCategories[key].name}
+        </button>
+    `).join('');
+
+    // Activate edge-to-edge window spacing for the titlebar
+    leftPane.classList.add('weapons-mode');
+
+    leftPane.innerHTML = `
+        <div class="sub-titlebar">
+            <div class="title-left">
+                <span class="title-text">Weapons</span>
+            </div>
+            <div class="window-controls">
+                <div class="control-btn minus"></div>
+                <div class="control-btn plus"></div>
+                <div class="control-btn cross"></div>
+            </div>
+        </div>
+        <div class="left-pane-content">
+            <nav class="button-list weapon-category-list">${items}</nav>
+        </div>
+    `;
+
+    leftPane.querySelectorAll('.weapon-category-btn').forEach(btn => {
+        btn.addEventListener('click', () => renderWeaponsScreen(btn.dataset.category));
+    });
+}
+
+function renderWeaponVariantList(categoryKey) {
+    const category = weaponCategories[categoryKey];
+    const numbering = weaponNumbering[categoryKey];
+    const rowStatus = weaponRowStatus[categoryKey];
+
+    const rows = category.variants.map((variant, rowPosition) => {
+        const displayNumber = numbering[rowPosition];
+        const state = rowStatus[rowPosition];
+        const statusText = statusLabels[state];
+        const statusClass = state === 'equipped' ? '' : ` weapon-status-${state}`;
+
+        // Dynamic Image Selector: Use altImage if state is 'alternate' and it exists, otherwise fall back to default
+        const currentImage = (state === 'alternate' && variant.altImage) ? variant.altImage : variant.image;
+
+        return `
+            <div class="weapon-row" data-row="${rowPosition}">
+                <div class="weapon-order-controls">
+                    <button class="weapon-order-btn up" data-row="${rowPosition}" aria-label="Move number up">▲</button>
+                    <button class="weapon-order-btn down" data-row="${rowPosition}" aria-label="Move number down">▼</button>
+                </div>
+                <div class="weapon-slot-number">${displayNumber}</div>
+                <img class="weapon-thumb" src="${currentImage}" alt="${variant.name}">
+                <div class="weapon-info-text">
+                    <p class="weapon-name">${variant.name}</p>
+                    <p class="weapon-substatus">Placeholder status text</p>
+                </div>
+                <div class="weapon-row-right">
+                    <span class="weapon-status-btn${statusClass}">${statusText}</span>
+                    <div class="weapon-cycle-controls">
+                        <button class="weapon-cycle-btn prev" data-row="${rowPosition}" aria-label="Previous equip status">«</button>
+                        <button class="weapon-cycle-btn next" data-row="${rowPosition}" aria-label="Next equip status">»</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    screenContent.innerHTML = `
+        <div class="weapon-variant-list">${rows}</div>
+        <div class="weapon-footer">
+            <button class="weapon-footer-btn">Info</button>
+            <button class="weapon-footer-btn">Color</button>
+        </div>
+    `;
+
+    // Up/down event listeners
+    screenContent.querySelectorAll('.weapon-order-btn.up').forEach(btn => {
+        btn.addEventListener('click', () => {
+            swapWeaponNumberByValue(categoryKey, parseInt(btn.dataset.row, 10), -1);
+        });
+    });
+    screenContent.querySelectorAll('.weapon-order-btn.down').forEach(btn => {
+        btn.addEventListener('click', () => {
+            swapWeaponNumberByValue(categoryKey, parseInt(btn.dataset.row, 10), 1);
+        });
+    });
+    // Cycle status event listeners
+    screenContent.querySelectorAll('.weapon-cycle-btn.prev').forEach(btn => {
+        btn.addEventListener('click', () => {
+            cycleRowEquipStatus(categoryKey, parseInt(btn.dataset.row, 10), -1);
+        });
+    });
+    screenContent.querySelectorAll('.weapon-cycle-btn.next').forEach(btn => {
+        btn.addEventListener('click', () => {
+            cycleRowEquipStatus(categoryKey, parseInt(btn.dataset.row, 10), 1);
+        });
+    });
+}
+
+// Finds whichever row currently holds `targetNumber` and swaps it with `row`.
+function swapWeaponNumberByValue(categoryKey, row, direction) {
+    const numbering = weaponNumbering[categoryKey];
+    const total = numbering.length;
+    const currentNumber = numbering[row];
+
+    let targetNumber = currentNumber + direction;
+    if (targetNumber < 1) targetNumber = total;   // 1 going "up" wraps to the max
+    if (targetNumber > total) targetNumber = 1;   // max going "down" wraps to 1
+
+    const partnerRow = numbering.indexOf(targetNumber);
+    numbering[row] = targetNumber;
+    numbering[partnerRow] = currentNumber;
+    renderWeaponVariantList(categoryKey);
+}
+
+function getAvailableStates(categoryKey) {
+    const restrictedCategories = ['railcannon', 'rocketlauncher', 'arms'];
+    if (restrictedCategories.includes(categoryKey)) {
+        return ['equipped', 'unequipped'];
+    }
+    return ['equipped', 'alternate', 'unequipped'];
+}
+
+function cycleRowEquipStatus(categoryKey, row, direction) {
+    const rowStatus = weaponRowStatus[categoryKey];
+    const availableStates = getAvailableStates(categoryKey);
+    const total = availableStates.length;
+
+    // Find the index in the available states, defaulting to 0 if something goes wrong
+    let currentIndex = availableStates.indexOf(rowStatus[row]);
+    if (currentIndex === -1) currentIndex = 0;
+
+    // Calculate the next state (wrapping around backwards or forwards)
+    const nextIndex = (currentIndex + direction + total) % total;
+
+    rowStatus[row] = availableStates[nextIndex];
+    renderWeaponVariantList(categoryKey);
+}
+
+function renderWeaponsScreen(categoryKey) {
+    activeWeaponCategory = categoryKey;
+
+    renderWeaponCategoryNav(categoryKey);
+
+    subIcon.textContent = '🔫';
+    subTitleText.textContent = weaponCategories[categoryKey].name;
+    screenContent.classList.add('top-anchored', 'weapons-mode');
+
+    renderWeaponVariantList(categoryKey);
+}
+
+const weaponsButton = document.querySelector('.os-button[data-target="weapons"]');
+if (weaponsButton) {
+    weaponsButton.addEventListener('click', () => renderWeaponsScreen(activeWeaponCategory));
 }

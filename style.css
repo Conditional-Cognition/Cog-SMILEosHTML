@@ -106,6 +106,24 @@ body {
     margin-bottom: 25px;
     position: relative;
     width: 100%;
+    cursor: pointer;
+}
+
+.logo-image {
+    display: none;
+    width: 120px;
+    height: 40px;
+    margin: 0 auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.brand-area.showing-image .logo-text-wrap {
+    display: none;
+}
+
+.brand-area.showing-image .logo-image {
+    display: block;
 }
 
 .logo-white {
@@ -285,6 +303,183 @@ body {
     justify-content: flex-start;
 }
 
+/* Weapons tab left-pane: category header + button list stand in for the brand/nav */
+.weapons-header {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.weapon-category-btn.active-tab {
+    color: #ffffff;
+    background-image: url('assets/SmileOS_2_Button_Wide_Pressed.png');
+}
+
+/* Weapons tab right-pane: stretch full width instead of centering, footer pinned to bottom */
+.inner-screen.weapons-mode {
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.weapon-variant-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.weapon-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+
+.weapon-order-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.weapon-order-btn {
+    width: 16px;
+    height: 13px;
+    font-size: 7px;
+    line-height: 1;
+    background-color: #1c1a1a;
+    border: 1px solid #333;
+    color: #888;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 2px;
+}
+
+.weapon-order-btn:hover {
+    color: #ffffff;
+    border-color: #da2222;
+}
+
+.weapon-slot-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: #666666;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.weapon-thumb {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    background-color: #0a0a0a;
+    border: 1px solid #262626;
+    border-radius: 3px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    flex-shrink: 0;
+}
+
+.weapon-info-text {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.weapon-name {
+    margin: 0;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.weapon-substatus {
+    margin: 2px 0 0 0;
+    color: #888888;
+    font-size: 10px;
+}
+
+.weapon-row-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.weapon-status-btn {
+    display: inline-block;
+    background-color: #1c1a1a;
+    border: 1px solid #444;
+    color: #dddddd;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.weapon-status-btn.weapon-status-alternate {
+    color: #da2222;
+    font-weight: bold;
+}
+
+.weapon-status-btn.weapon-status-unequipped {
+    color: #888888;
+}
+
+.weapon-cycle-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.weapon-cycle-btn {
+    background-color: #1c1a1a;
+    border: 1px solid #333;
+    color: #888888;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.weapon-cycle-btn:hover {
+    color: #ffffff;
+    border-color: #da2222;
+}
+
+.weapon-footer {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.weapon-footer-btn {
+    flex: 1;
+    background-color: #1c1a1a;
+    border: 1px solid #444;
+    color: #cccccc;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.weapon-footer-btn:hover {
+    color: #ffffff;
+    border-color: #da2222;
+}
+
 .enemy-detail-page {
     display: flex;
     align-items: flex-start;
@@ -352,3 +547,19 @@ body {
 .enemy-link:hover {
     text-decoration: underline;
 }
+
+/* Handles switching the left pane into an edge-to-edge sub-window structure */
+.left-pane.weapons-mode {
+    padding: 0;
+    align-items: stretch;
+}
+
+/* Restores layout padding for the inner side menu buttons safely under the titlebar */
+.left-pane-content {
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
