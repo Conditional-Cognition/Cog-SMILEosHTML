@@ -113,6 +113,46 @@ const enemyData = {
             '- Most weapons will be effective against them, but a Revolver headshot is the quickest and surest way to eliminate a Stray.\n' +
             '\n' +
             '- Due to their static nature and slow rate of attacking, they are an excellent target for projectile parrying.'
+    },
+    stalker: {
+        name: 'STALKER',
+        url: 'https://ultrakill.wiki.gg/wiki/Stalker',
+        image: 'assets/enemies/stalker.png',
+        type: 'Lesser Husk',
+        data:
+            'As the Greed layer\'s punishment, Stalkers have been forced to carry heavy boulders up the monuments of mankind\'s greed for all eternity.\n' +
+            '\n' +
+            'They have carried out their punishment for so long that their bodies have evolved, warped and grown to better suit it.\n' +
+            '\n' +
+            'Their limbs have twisted to give them better balance while carrying boulders on their backs and their skin and muscles have completely dried up, allowing them to survive direct contact with the dunes of gold dust that Greed\'s sun has raised to unfathomably high temperatures.\n' +
+            '\n' +
+            'However, an unidentified sentient force has replaced the boulders they would normally carry with high tech bombs that, upon detonation, will transform any nearby blood into the gold dust "sand" that covers the layer\'s surface.\n' +
+            '\n' +
+            'Research has shown the technology to be very similar to the augmentations of the modified Strays known as Soldiers, so it is likely both modifications come from the same source.',
+        strategy:
+            '- The lights on the canister give information on a Stalker\'s state. The color shows the state of their explosive and the brightness of the color shows how much health the Stalker has left.\n' +
+            '\n' +
+            '- It\'s advisable to forcibly detonate a Stalker rather than allowing one to detonate itself, as the latter explosion will have a larger area of effect.\n' +
+            '\n' +
+            '- If a Stalker gets close to its target and can no longer be pushed away, a ground slam wave can launch them out of range so they can be detonated safely in mid-air, since the explosion is mostly horizontal.\n' +
+            '\n' +
+            '- Attaching magnets to a Stalker will reduce the radius of its detonation.'
+    },
+    schism: {
+        name: 'SCHISM',
+        url: 'https://ultrakill.wiki.gg/wiki/Schism',
+        image: 'assets/enemies/schism.png',
+        type: 'Greater Husk',
+        data:
+            'The result of two souls attempting to manifest in the same space, causing an amalgamation of two physical bodies.\n' +
+            '\n' +
+            'Due to the doubled body mass, they’re quite resilient to damage, but have very poor motor control and thus cannot aim with any degree of accuracy, resorting to barrages of energy orbs in the general direction of their opponent.',
+        strategy:
+            '- Piercer revolver\'s charged headshots are an efficient tool for a quick kill against Schisms, though their displaced head can make aiming difficult for the inexperienced.\n' +
+            '\n' +
+            '- A point-blank Pump Charge shotgun blast with 2 pumps will be able to take them down in a single shot.\n' +
+            '\n' +
+            '- Due to their poor aim, they aren\'t a priority target, but the sheer amount of projectiles can sometimes make avoiding them tricky in busy encounters.'
     }
 };
 
