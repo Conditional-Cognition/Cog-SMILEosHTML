@@ -179,7 +179,7 @@ function renderSocialDetail(key) {
         </div>
         <button class="enemy-back-btn" id="enemy-back-btn">Back</button>
     `;
-    document.getElementById('enemy-back-btn').addEventListener('click', () => renderEnemiesScreen(key));
+    document.getElementById('enemy-back-btn').addEventListener('click', () => renderSocialsScreen(key));
 }
 
 function renderEnemyDetail(key) {
