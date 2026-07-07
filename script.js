@@ -221,25 +221,25 @@ const weaponCategories = {
     revolver: {
         name: 'Revolver',
         variants: [
-            { name: 'PIERCER', altName: 'SLAB PIERCER', image: 'assets/weapons/SingleRevolver.webp', altImage: 'assets/weapons/RevolverAltSingle.webp' },
-            { name: 'MARKSMAN', altName: 'SLAB MARKSMAN', image: 'assets/weapons/RevolverSpecial.webp', altImage: 'assets/weapons/RevolverAltSpecial.webp' },
-            { name: 'SHARPSHOOTER', altName: 'SLAB SHARPSHOOTER', image: 'assets/weapons/RevolverSharp.webp', altImage: 'assets/weapons/RevolverAltSharp.webp' }
+            { name: 'PIERCER', altName: 'PIERCER', image: 'assets/weapons/SingleRevolver.webp', altImage: 'assets/weapons/RevolverAltSingle.webp' },
+            { name: 'MARKSMAN', altName: 'MARKSMAN', image: 'assets/weapons/RevolverSpecial.webp', altImage: 'assets/weapons/RevolverAltSpecial.webp' },
+            { name: 'SHARPSHOOTER', altName: 'SHARPSHOOTER', image: 'assets/weapons/RevolverSharp.webp', altImage: 'assets/weapons/RevolverAltSharp.webp' }
         ]
     },
     shotgun: {
         name: 'Shotgun',
         variants: [
-            { name: 'CORE EJECT', altName: 'CORE EJECT JACKHAMMER', image: 'assets/weapons/Standard_Core_Eject_Shotgun.webp', altImage: 'assets/weapons/Alternate_Core_Eject_Shotgun.webp' },
-            { name: 'PUMP CHARGE', altName: 'PUMP CHARGE JACKHAMMER', image: 'assets/weapons/Shotgun1.webp', altImage: 'assets/weapons/Alternate_Pump_Charge_Shotgun.webp' },
-            { name: 'SAWED-ON', altName: 'SAWED-ON JACKHAMMER', image: 'assets/weapons/Standard_Sawed-On_Shotgun.webp', altImage: 'assets/weapons/Alternate_Sawed-On_Shotgun.webp' }
+            { name: 'CORE EJECT', altName: 'CORE EJECT', image: 'assets/weapons/Standard_Core_Eject_Shotgun.webp', altImage: 'assets/weapons/Alternate_Core_Eject_Shotgun.webp' },
+            { name: 'PUMP CHARGE', altName: 'PUMP CHARGE', image: 'assets/weapons/Shotgun1.webp', altImage: 'assets/weapons/Alternate_Pump_Charge_Shotgun.webp' },
+            { name: 'SAWED-ON', altName: 'SAWED-ON', image: 'assets/weapons/Standard_Sawed-On_Shotgun.webp', altImage: 'assets/weapons/Alternate_Sawed-On_Shotgun.webp' }
         ]
     },
     nailgun: {
         name: 'Nailgun',
         variants: [
-            { name: 'ATTRACTOR', altName: 'ATTRACTOR SAWBLADE', image: 'assets/weapons/Nailgun2.webp', altImage: 'assets/weapons/SawbladeLauncher.webp' },
-            { name: 'OVERHEAT', altName: 'OVERHEAT SAWBLADE', image: 'assets/weapons/NailgunOverheat.webp', altImage: 'assets/weapons/SawbladeLauncherOverheat.webp' },
-            { name: 'JUMPSTART', altName: 'JUMPSTART SAWBLADE', image: 'assets/weapons/Standard_JumpStart_Nailgun.webp', altImage: 'assets/weapons/Alternate_JumpStart_Nailgun.webp' }
+            { name: 'ATTRACTOR', altName: 'ATTRACTOR', image: 'assets/weapons/Nailgun2.webp', altImage: 'assets/weapons/SawbladeLauncher.webp' },
+            { name: 'OVERHEAT', altName: 'OVERHEAT', image: 'assets/weapons/NailgunOverheat.webp', altImage: 'assets/weapons/SawbladeLauncherOverheat.webp' },
+            { name: 'JUMPSTART', altName: 'JUMPSTART', image: 'assets/weapons/Standard_JumpStart_Nailgun.webp', altImage: 'assets/weapons/Alternate_JumpStart_Nailgun.webp' }
         ]
     },
     railcannon: {
@@ -253,9 +253,9 @@ const weaponCategories = {
     rocketlauncher: {
         name: 'Rocket Launcher',
         variants: [
-            { name: 'FIRESTARTER', image: 'assets/weapons/Firestarter_Rocket_Launcher.webp' },
+            { name: 'FREEZEFRAME', image: 'assets/weapons/Rocketlauncher.webp' },
             { name: 'S.R.S. CANNON', image: 'assets/weapons/S.R.S._Cannon.webp' },
-            { name: 'FREEZEFRAME', image: 'assets/weapons/Rocketlauncher.webp' }
+            { name: 'FIRESTARTER', image: 'assets/weapons/Firestarter_Rocket_Launcher.webp' }
         ]
     },
     arms: {
