@@ -13,6 +13,19 @@ const subTitleText = document.getElementById('sub-title-text');
 const subIcon = document.getElementById('sub-icon');
 const screenContent = document.getElementById('screen-content');
 
+// Snapshot the original Tip of the Day markup before anything overwrites it
+const tipOfDayHTML = screenContent.innerHTML;
+
+function resetToTipOfDay() {
+    subIcon.textContent = '✓';
+    subTitleText.textContent = 'Tip of the Day';
+    screenContent.classList.remove('top-anchored');
+    screenContent.innerHTML = tipOfDayHTML;
+}
+
+document.getElementById('main-close-btn').addEventListener('click', () => location.reload());
+document.getElementById('sub-close-btn').addEventListener('click', resetToTipOfDay);
+
 const enemyData = {
     artfight: {
         name: 'ARTFIGHT',
