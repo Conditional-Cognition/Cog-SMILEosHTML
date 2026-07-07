@@ -398,6 +398,7 @@ body {
     color: #ffffff;
     font-weight: bold;
     font-size: 13px;
+    /*noinspection CssNonIntegerLengthInPixels*/
     letter-spacing: 0.5px;
 }
 
@@ -563,3 +564,20 @@ body {
     flex: 1;
 }
 
+/* Make buttons sleeker and thinner ONLY on the weapons terminal screen */
+.left-pane.weapons-mode .os-button {
+    height: 30px;
+    font-size: 12px;
+    margin-bottom: 0; /* Clear baseline margin overrides to rely purely on the grid gaps */
+}
+
+/* Creates an empty layout void exactly equal to one thin button (30px) + menu list gap (8px) */
+.weapon-nav-spacer {
+    height: 38px;
+    width: 100%;
+}
+
+/* Ensures the back button takes up full width below the spacer */
+.weapon-back-btn {
+    width: 100%;
+}

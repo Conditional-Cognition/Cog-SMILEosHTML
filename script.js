@@ -1,12 +1,34 @@
 // Grab all the navigation buttons
+// noinspection SpellCheckingInspection
+
 const buttons = document.querySelectorAll('.os-button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        // Add your screen text switching logic here later!
-        console.log(`${button.textContent} clicked`);
+        const target = button.getAttribute('data-target');
+        if (target === 'cybergrind') {
+            renderCyberGrind();
+        } else if (target === 'sandbox') {
+            renderSandbox();
+        }
     });
 });
+
+function renderCyberGrind() {
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_cybergrind.png" style="width: 16px; height: 16px;" alt="cybergrind icon">`;
+    subTitleText.textContent = 'The Cyber Grind';
+    screenContent.classList.add('top-anchored');
+    screenContent.innerHTML = `<p class="screen-text">Cyber Grind simulation currently offline.</p>`;
+    leftPane.innerHTML = leftPaneDefaultHTML; // Ensure nav stays consistent
+}
+
+function renderSandbox() {
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_sandbox.png" style="width: 16px; height: 16px;" alt="sandbox icon">`;
+    subTitleText.textContent = 'The Sandbox';
+    screenContent.classList.add('top-anchored');
+    screenContent.innerHTML = `<p class="screen-text">Sandbox mode initialized.</p>`;
+    leftPane.innerHTML = leftPaneDefaultHTML;
+}
 
 // --- Enemies tab: socials roster ---
 const subTitleText = document.getElementById('sub-title-text');
@@ -18,8 +40,18 @@ const leftPane = document.querySelector('.left-pane');
 const tipOfDayHTML = screenContent.innerHTML;
 const leftPaneDefaultHTML = leftPane.innerHTML;
 
+function resetToTipOfDay() {
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_tip.webp" style="width: 16px; height: 16px;" alt="tip_icon">`;
+    subTitleText.textContent = 'Tip of the Day';
+    screenContent.classList.remove('top-anchored', 'weapons-mode');
+    screenContent.innerHTML = tipOfDayHTML;
+
+    // Weapons mode swaps out the whole left-pane nav, so restore it too
+    leftPane.innerHTML = leftPaneDefaultHTML;
+}
+
 document.getElementById('main-close-btn').addEventListener('click', () => location.reload());
-document.getElementById('sub-close-btn').addEventListener('click', () => location.reload());
+document.getElementById('sub-close-btn').addEventListener('click', resetToTipOfDay);
 
 // --- Logo click toggle: swap between the custom text logo and the real image ---
 // Delegated on the left-pane container itself (rather than .brand-area directly)
@@ -103,25 +135,25 @@ const weaponCategories = {
     revolver: {
         name: 'Revolver',
         variants: [
-            { name: 'PIERCER', image: 'assets/weapons/SingleRevolver.webp', altImage: 'assets/weapons/RevolverAltSingle.webp' },
-            { name: 'MARKSMAN', image: 'assets/weapons/RevolverSharp.webp', altImage: 'assets/weapons/RevolverAltSharp.webp' },
-            { name: 'SHARPSHOOTER', image: 'assets/weapons/RevolverSpecial.webp', altImage: 'assets/weapons/RevolverAltSpecial.webp' }
+            { name: 'PIERCER', altName: 'SLAB PIERCER', image: 'assets/weapons/SingleRevolver.webp', altImage: 'assets/weapons/RevolverAltSingle.webp' },
+            { name: 'MARKSMAN', altName: 'SLAB MARKSMAN', image: 'assets/weapons/RevolverSpecial.webp', altImage: 'assets/weapons/RevolverAltSpecial.webp' },
+            { name: 'SHARPSHOOTER', altName: 'SLAB SHARPSHOOTER', image: 'assets/weapons/RevolverSharp.webp', altImage: 'assets/weapons/RevolverAltSharp.webp' }
         ]
     },
     shotgun: {
         name: 'Shotgun',
         variants: [
-            { name: 'CORE EJECT', image: 'assets/weapons/Standard_Core_Eject_Shotgun.webp', altImage: 'assets/weapons/Alternate_Core_Eject_Shotgun.webp' },
-            { name: 'PUMP CHARGE', image: 'assets/weapons/Shotgun1.webp', altImage: 'assets/weapons/Alternate_Pump_Charge_Shotgun.webp' },
-            { name: 'SAWED-ON', image: 'assets/weapons/Standard_Sawed-On_Shotgun.webp', altImage: 'assets/weapons/Alternate_Sawed-On_Shotgun.webp' }
+            { name: 'CORE EJECT', altName: 'CORE EJECT JACKHAMMER', image: 'assets/weapons/Standard_Core_Eject_Shotgun.webp', altImage: 'assets/weapons/Alternate_Core_Eject_Shotgun.webp' },
+            { name: 'PUMP CHARGE', altName: 'PUMP CHARGE JACKHAMMER', image: 'assets/weapons/Shotgun1.webp', altImage: 'assets/weapons/Alternate_Pump_Charge_Shotgun.webp' },
+            { name: 'SAWED-ON', altName: 'SAWED-ON JACKHAMMER', image: 'assets/weapons/Standard_Sawed-On_Shotgun.webp', altImage: 'assets/weapons/Alternate_Sawed-On_Shotgun.webp' }
         ]
     },
     nailgun: {
         name: 'Nailgun',
         variants: [
-            { name: 'ATTRACTOR', image: 'assets/weapons/Nailgun2.webp', altImage: 'assets/weapons/SawbladeLauncher.webp' },
-            { name: 'OVERHEAT', image: 'assets/weapons/NailgunOverheat.webp', altImage: 'assets/weapons/SawbladeLauncherOverheat.webp' },
-            { name: 'JUMPSTART', image: 'assets/weapons/Standard_JumpStart_Nailgun.webp', altImage: 'assets/weapons/Alternate_JumpStart_Nailgun.webp' }
+            { name: 'ATTRACTOR', altName: 'ATTRACTOR SAWBLADE', image: 'assets/weapons/Nailgun2.webp', altImage: 'assets/weapons/SawbladeLauncher.webp' },
+            { name: 'OVERHEAT', altName: 'OVERHEAT SAWBLADE', image: 'assets/weapons/NailgunOverheat.webp', altImage: 'assets/weapons/SawbladeLauncherOverheat.webp' },
+            { name: 'JUMPSTART', altName: 'JUMPSTART SAWBLADE', image: 'assets/weapons/Standard_JumpStart_Nailgun.webp', altImage: 'assets/weapons/Alternate_JumpStart_Nailgun.webp' }
         ]
     },
     railcannon: {
@@ -136,8 +168,8 @@ const weaponCategories = {
         name: 'Rocket Launcher',
         variants: [
             { name: 'FIRESTARTER', image: 'assets/weapons/Firestarter_Rocket_Launcher.webp' },
-            { name: 'FREEZEFRAME', image: 'assets/weapons/RocketLauncher.webp' },
-            { name: 'SAWBLADE LAUNCHER', image: 'assets/weapons/SawbladeLauncher.webp' }
+            { name: 'S.R.S. CANNON', image: 'assets/weapons/S.R.S._Cannon.webp' },
+            { name: 'FREEZEFRAME', image: 'assets/weapons/Rocketlauncher.webp' }
         ]
     },
     arms: {
@@ -152,30 +184,19 @@ const weaponCategories = {
 
 const weaponNumbering = {};
 const weaponRowStatus = {};
-const statusStates = ['equipped', 'alternate', 'unequipped'];
 const statusLabels = {
     equipped: 'Equipped',
     alternate: 'Alternate',
     unequipped: 'Unequipped'
 };
 
+// 1st: Ensure every weapon row defaults entirely to 'equipped' on reload
 Object.keys(weaponCategories).forEach(key => {
-    weaponNumbering[key] = [1, 2, 3]; // weaponNumbering[key][rowPosition] = displayed number
-    weaponRowStatus[key] = ['equipped', 'equipped', 'equipped']; // starting point only, not exclusive
+    weaponNumbering[key] = [1, 2, 3];
+    weaponRowStatus[key] = ['equipped', 'equipped', 'equipped'];
 });
 
 let activeWeaponCategory = 'revolver';
-
-function resetToTipOfDay() {
-    subIcon.textContent = '✓';
-    subTitleText.textContent = 'Tip of the Day';
-    screenContent.classList.remove('top-anchored', 'weapons-mode');
-    screenContent.innerHTML = tipOfDayHTML;
-
-    // Restore default nav panel and clear the weapons window styling
-    leftPane.innerHTML = leftPaneDefaultHTML;
-    leftPane.classList.remove('weapons-mode');
-}
 
 function renderWeaponCategoryNav(activeKey) {
     const items = Object.keys(weaponCategories).map(key => `
@@ -184,23 +205,9 @@ function renderWeaponCategoryNav(activeKey) {
         </button>
     `).join('');
 
-    // Activate edge-to-edge window spacing for the titlebar
-    leftPane.classList.add('weapons-mode');
-
     leftPane.innerHTML = `
-        <div class="sub-titlebar">
-            <div class="title-left">
-                <span class="title-text">Weapons</span>
-            </div>
-            <div class="window-controls">
-                <div class="control-btn minus"></div>
-                <div class="control-btn plus"></div>
-                <div class="control-btn cross"></div>
-            </div>
-        </div>
-        <div class="left-pane-content">
-            <nav class="button-list weapon-category-list">${items}</nav>
-        </div>
+        <div class="weapons-header">Weapons</div>
+        <nav class="button-list weapon-category-list">${items}</nav>
     `;
 
     leftPane.querySelectorAll('.weapon-category-btn').forEach(btn => {
@@ -219,8 +226,16 @@ function renderWeaponVariantList(categoryKey) {
         const statusText = statusLabels[state];
         const statusClass = state === 'equipped' ? '' : ` weapon-status-${state}`;
 
-        // Dynamic Image Selector: Use altImage if state is 'alternate' and it exists, otherwise fall back to default
-        const currentImage = (state === 'alternate' && variant.altImage) ? variant.altImage : variant.image;
+        // 2.5th: Alternate picture logic and dynamic text switching
+        let weaponNameDisplay = variant.name;
+        let weaponImageSrc = variant.image;
+
+        if (state === 'alternate' && variant.altImage) {
+            weaponImageSrc = variant.altImage;
+            if (variant.altName) {
+                weaponNameDisplay = variant.altName;
+            }
+        }
 
         return `
             <div class="weapon-row" data-row="${rowPosition}">
@@ -229,10 +244,9 @@ function renderWeaponVariantList(categoryKey) {
                     <button class="weapon-order-btn down" data-row="${rowPosition}" aria-label="Move number down">▼</button>
                 </div>
                 <div class="weapon-slot-number">${displayNumber}</div>
-                <img class="weapon-thumb" src="${currentImage}" alt="${variant.name}">
+                <img class="weapon-thumb" src="${weaponImageSrc}" alt="${weaponNameDisplay}">
                 <div class="weapon-info-text">
-                    <p class="weapon-name">${variant.name}</p>
-                    <p class="weapon-substatus">Placeholder status text</p>
+                    <p class="weapon-name">${weaponNameDisplay}</p>
                 </div>
                 <div class="weapon-row-right">
                     <span class="weapon-status-btn${statusClass}">${statusText}</span>
@@ -253,7 +267,6 @@ function renderWeaponVariantList(categoryKey) {
         </div>
     `;
 
-    // Up/down event listeners
     screenContent.querySelectorAll('.weapon-order-btn.up').forEach(btn => {
         btn.addEventListener('click', () => {
             swapWeaponNumberByValue(categoryKey, parseInt(btn.dataset.row, 10), -1);
@@ -264,7 +277,6 @@ function renderWeaponVariantList(categoryKey) {
             swapWeaponNumberByValue(categoryKey, parseInt(btn.dataset.row, 10), 1);
         });
     });
-    // Cycle status event listeners
     screenContent.querySelectorAll('.weapon-cycle-btn.prev').forEach(btn => {
         btn.addEventListener('click', () => {
             cycleRowEquipStatus(categoryKey, parseInt(btn.dataset.row, 10), -1);
@@ -277,15 +289,14 @@ function renderWeaponVariantList(categoryKey) {
     });
 }
 
-// Finds whichever row currently holds `targetNumber` and swaps it with `row`.
 function swapWeaponNumberByValue(categoryKey, row, direction) {
     const numbering = weaponNumbering[categoryKey];
     const total = numbering.length;
     const currentNumber = numbering[row];
 
     let targetNumber = currentNumber + direction;
-    if (targetNumber < 1) targetNumber = total;   // 1 going "up" wraps to the max
-    if (targetNumber > total) targetNumber = 1;   // max going "down" wraps to 1
+    if (targetNumber < 1) targetNumber = total;
+    if (targetNumber > total) targetNumber = 1;
 
     const partnerRow = numbering.indexOf(targetNumber);
     numbering[row] = targetNumber;
@@ -293,27 +304,25 @@ function swapWeaponNumberByValue(categoryKey, row, direction) {
     renderWeaponVariantList(categoryKey);
 }
 
-function getAvailableStates(categoryKey) {
-    const restrictedCategories = ['railcannon', 'rocketlauncher', 'arms'];
-    if (restrictedCategories.includes(categoryKey)) {
-        return ['equipped', 'unequipped'];
-    }
-    return ['equipped', 'alternate', 'unequipped'];
-}
-
 function cycleRowEquipStatus(categoryKey, row, direction) {
     const rowStatus = weaponRowStatus[categoryKey];
-    const availableStates = getAvailableStates(categoryKey);
-    const total = availableStates.length;
 
-    // Find the index in the available states, defaulting to 0 if something goes wrong
-    let currentIndex = availableStates.indexOf(rowStatus[row]);
-    if (currentIndex === -1) currentIndex = 0;
+    // 2nd: Restrict Railcannon, Rocket Launcher, and Arms from accessing 'alternate'
+    let allowedStates = ['equipped', 'alternate', 'unequipped'];
+    if (categoryKey === 'railcannon' || categoryKey === 'rocketlauncher' || categoryKey === 'arms') {
+        allowedStates = ['equipped', 'unequipped'];
+    }
 
-    // Calculate the next state (wrapping around backwards or forwards)
-    const nextIndex = (currentIndex + direction + total) % total;
+    const currentIndex = allowedStates.indexOf(rowStatus[row]);
+    const total = allowedStates.length;
 
-    rowStatus[row] = availableStates[nextIndex];
+    if (currentIndex === -1) {
+        rowStatus[row] = allowedStates[0];
+    } else {
+        const nextIndex = (currentIndex + direction + total) % total;
+        rowStatus[row] = allowedStates[nextIndex];
+    }
+
     renderWeaponVariantList(categoryKey);
 }
 
@@ -322,7 +331,7 @@ function renderWeaponsScreen(categoryKey) {
 
     renderWeaponCategoryNav(categoryKey);
 
-    subIcon.textContent = '🔫';
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_gun.png" style="width: 16px; height: 16px;" alt="weapons icon">`;
     subTitleText.textContent = weaponCategories[categoryKey].name;
     screenContent.classList.add('top-anchored', 'weapons-mode');
 
