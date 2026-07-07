@@ -1,0 +1,354 @@
+/* Base Reset and Center Positioning */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0c0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    user-select: none;
+}
+
+/* Background Crimson Aura Glow */
+.glow-container {
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 80px 20px rgba(139, 0, 0, 0.45);
+}
+
+/* Outer Window Frame */
+.smile-os-window {
+    width: 600px;
+    height: 480px;
+    background-color: #2b2b2b;
+    border: 4px solid #1a1a1a;
+    box-shadow: inset 1px 1px 2px #555, inset -1px -1px 2px #000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Glossy Gradient Red Title Bars */
+.main-titlebar, .sub-titlebar {
+    background: linear-gradient(to bottom, #9e1b1b 0%, #731010 40%, #540808 100%);
+    border-bottom: 3px solid #141414;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.title-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.smiley-icon {
+    color: #9e1b1b;
+    background: #141414;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+}
+
+/* Window Control Buttons (Inset Squares with Symbols) */
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.control-btn {
+    width: 14px;
+    height: 14px;
+    background-color: #1c1a1a;
+    border: 1px solid #444;
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 2px #000;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Lower split panes area */
+.interface-body {
+    display: flex;
+    flex: 1;
+    background-color: #212121;
+    padding: 10px;
+    gap: 10px;
+}
+
+/* Left Sidebar Menu Frame */
+.left-pane {
+    width: 160px;
+    background-color: #1c1c1c;
+    border: 2px solid #121212;
+    border-radius: 4px;
+    box-shadow: inset -1px -1px 2px #333;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* SmileOS Text Logo Styling */
+.brand-area {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    width: 100%;
+}
+
+.logo-white {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.logo-sub {
+    color: #d12828;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* Rainbow underline bar under the header */
+.rainbow-swoosh {
+    height: 4px;
+    width: 80%;
+    margin: 4px auto 0 auto;
+    background: linear-gradient(to right, #ff3333, #ff9933, #33cc33, #3399ff, #9933ff);
+    border-radius: 2px;
+}
+
+/* Skeuomorphic Rounded Inset Menu Buttons */
+.button-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Authentic Pixelated SmileOS Button scaling */
+.os-button {
+    width: 100%;
+    height: 44px;
+    color: #aaaaaa;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+
+    /* Completely wipe out default borders and backgrounds */
+    border: none;
+    background-color: transparent;
+
+    /* Map texture asset natively */
+    background-image: url('assets/SmileOS_2_Button_Wide.png');
+    background-size: 100% 100%; /* Stretches the asset perfectly across the shape */
+    background-repeat: no-repeat;
+
+    /* CRUCIAL FOR RETRO GAME ASSETS: Keeps pixels sharp when scaled up */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    transition: filter 0.1s;
+}
+
+/* Hover brightness focus glow */
+.os-button:hover {
+    filter: brightness(1.2);
+    color: #ffffff;
+}
+
+/* Switches texture ONLY while the mouse button is physically held down */
+.os-button:active {
+    color: #ffffff;
+    background-image: url('assets/SmileOS_2_Button_Wide_Pressed.png');
+}
+
+/* Right Main Display Window Section */
+.right-pane {
+    flex: 1;
+    background-color: #1a1a1a;
+    border: 2px solid #111;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sub-titlebar {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+/* Flat Matte CRT Inner Box Screen */
+.inner-screen {
+    flex: 1;
+    background-color: #0a0a0a;
+    margin: 8px;
+    border: 2px solid #141414;
+    box-shadow: inset 0 0 15px #000;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.screen-text {
+    color: #9c9c9c;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+}
+
+.highlight-red {
+    color: #da2222;
+    font-weight: bold;
+}
+
+.cheat-code {
+    color: #da2222;
+    font-family: monospace;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin: 10px 0 25px 0;
+    font-weight: bold;
+}
+
+.sub-text {
+    font-size: 13px;
+}
+
+/* Enemy roster grid, shown inside the CRT screen */
+.enemy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    max-height: 240px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.enemy-grid-btn {
+    aspect-ratio: 1 / 1;
+    background-color: #141414;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #333;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.1s, filter 0.1s;
+}
+
+.enemy-grid-btn:hover {
+    filter: brightness(1.15);
+}
+
+.enemy-grid-btn.active-tab {
+    border-color: #da2222;
+}
+
+.enemy-grid-locked {
+    aspect-ratio: 1 / 1;
+    background-color: #141414;
+    border: 2px dashed #333;
+    border-radius: 3px;
+    color: #555555;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-screen.top-anchored {
+    justify-content: flex-start;
+}
+
+.enemy-detail-page {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+    text-align: left;
+}
+
+.enemy-detail-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 4px;
+    image-rendering: pixelated;
+    flex-shrink: 0;
+}
+
+.enemy-detail-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.enemy-detail-panel .enemy-name {
+    margin: 0;
+    font-size: 15px;
+}
+
+.enemy-detail-panel .screen-text {
+    text-align: left;
+    margin: 0;
+    overflow-wrap: break-word;
+}
+
+.enemy-back-btn {
+    align-self: flex-start;
+    margin-top: 20px;
+    background-color: #1c1a1a;
+    color: #aaaaaa;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.1s, border-color 0.1s;
+}
+
+.enemy-back-btn:hover {
+    color: #ffffff;
+    border-color: #da2222;
+}
+
+.enemy-link {
+    color: #da2222;
+    font-family: monospace;
+    font-size: 13px;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.enemy-link:hover {
+    text-decoration: underline;
+}

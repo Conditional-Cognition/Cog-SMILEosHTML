@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmileOS 2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Red background aura glow zone -->
+<div class="glow-container">
+
+    <!-- Main SmileOS Interface Box -->
+    <div class="smile-os-window">
+
+        <!-- Main Top Title Bar -->
+        <header class="main-titlebar">
+            <div class="title-left">
+                <span class="smiley-icon">☺</span>
+                <span class="title-text">SmileOS 2.0</span>
+            </div>
+            <div class="window-controls">
+                <div class="control-btn minus"></div>
+                <div class="control-btn plus"></div>
+                <div class="control-btn cross"></div>
+            </div>
+        </header>
+
+        <!-- Inner Workplace Split Split -->
+        <div class="interface-body">
+
+            <!-- Left Nav Column -->
+            <aside class="left-pane">
+                <div class="brand-area">
+                    <span class="logo-white">Smile</span><span class="logo-sub">OS 2.0</span>
+                    <div class="rainbow-swoosh"></div>
+                </div>
+
+                <nav class="button-list">
+                    <button class="os-button">Weapons</button>
+                    <button class="os-button" data-target="enemies">Enemies</button>
+                    <button class="os-button">The Cyber Grind</button>
+                    <button class="os-button">The Sandbox</button>
+                </nav>
+            </aside>
+
+            <!-- Right Screen Container -->
+            <main class="right-pane">
+
+                <!-- Sub-Window Titlebar -->
+                <div class="sub-titlebar">
+                    <div class="title-left">
+                        <span class="check-icon" id="sub-icon">✓</span>
+                        <span id="sub-title-text">Tip of the Day</span>
+                    </div>
+                    <div class="window-controls">
+                        <div class="control-btn minus"></div>
+                        <div class="control-btn plus"></div>
+                        <div class="control-btn cross"></div>
+                    </div>
+                </div>
+
+                <!-- Inner Matte Black CRT Screen Screen -->
+                <div class="inner-screen" id="screen-content">
+                    <p class="screen-text">
+                        <span class="highlight-red">CHEATS</span> can be enabled in other levels by inputting
+                    </p>
+                    <p class="cheat-code">↑ ↑ ↓ ↓ ← → ← → B A</p>
+                    <p class="screen-text sub-text">
+                        Enabling cheats will disable ranks.
+                    </p>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
