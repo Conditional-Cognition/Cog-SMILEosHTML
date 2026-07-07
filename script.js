@@ -153,6 +153,118 @@ const enemyData = {
             '- A point-blank Pump Charge shotgun blast with 2 pumps will be able to take them down in a single shot.\n' +
             '\n' +
             '- Due to their poor aim, they aren\'t a priority target, but the sheer amount of projectiles can sometimes make avoiding them tricky in busy encounters.'
+    },
+    soldier: {
+        name: 'SOLDIER',
+        url: 'https://ultrakill.wiki.gg/wiki/Soldier',
+        image: 'assets/enemies/soldier.png',
+        type: 'Greater Husk',
+        data:
+            'Soldiers are an augmented version of Strays, whose technological implants have been scavenged from broken machines to channel Hell Energy with greater efficiency.\n' +
+            '\n' +
+            'This increase in power gives Soldiers more self-confidence, causing them to act more aggressively than normal Strays.\n' +
+            '\n' +
+            'Despite the enhancements, their intelligence remains low and it has yet to be determined who or what actually augmented them.',
+        strategy:
+            '- The shotgun is an excellent weapon against Soldiers, as long as its use is swift so as to not allow them to protect themselves with melee attacks.\n' +
+            '\n' +
+            '- Since Soldiers charge their shots in front of them rather than above them, the charge is also easier to interrupt via a precise revolver shot for an explosive kill.\n' +
+            '\n' +
+            '- Thanks to their augmentations, Soldiers are able to withstand normal explosions with little to no damage. The more powerful red explosions will go through their guard however, and they are unable to block if not on the ground.'
+    },
+    corpseofkingminos: {
+        name: 'THE CORPSE OF KING MINOS',
+        url: 'https://ultrakill.wiki.gg/wiki/The_Corpse_of_King_Minos',
+        image: 'assets/enemies/corpse.png',
+        type: 'Supreme Husk',
+        data:
+            'Once the great and beloved king of the Lust layer, Minos has now been reduced to a shambling corpse.\n' +
+            '\n' +
+            'Due to his incredible power of will and status as a just ruler in life remembered even millenia[sic] after his death, the manifestation of his soul is the largest Husk to ever have been recorded.\n' +
+            '\n' +
+            'Small traces of the original soul can still be detected in the body, but the corpse itself is animated and controlled entirely by the snakelike Parasites that he once commanded.\n' +
+            '\n' +
+            'Despite once bringing upon the renaissance of the Lust layer, his corpse now only seeks sinners to punish.',
+        strategy:
+            '- Due to his large stature, it can be quite difficult to recover blood from him, but his hands are usually holding on to the walls of the arena, which can be used for refueling.\n' +
+            '\n' +
+            '- Any weapon will work against an enemy this large, but melee and projectile parries make for a quick way to inflict grave damage.\n' +
+            '\n' +
+            '- Although it moves slowly, the Black Hole he summons is extremely dangerous and cannot be destroyed.'
+    },
+    insurrectionist: {
+        name: 'INSURRECTIONIST',
+        url: 'https://ultrakill.wiki.gg/wiki/Insurrectionist',
+        image: 'assets/enemies/insurrectionist.png',
+        type: 'Supreme Husk',
+        data:
+            'The Sisyphean Insurrectionists were an army of Husks gathered and trained by King Sisyphus for overthrowing Heaven\'s control of Hell, freeing the sinners from their eternal torment.\n' +
+            '\n' +
+            'During an era of chaos in Heaven, as the angelic watch was absent, Sisyphus began setting his plan in motion as his forces recruited all Husks that were intelligent enough to be useful to their cause and began attacking the demons that wandered the dunes of Greed.\n' +
+            '\n' +
+            'Upon the establishment of the Council and subsequent return of peace to Heaven, Gabriel and an army of angels were sent down to crush the insurrection and subjugate Sisyphus\' army.\n' +
+            '\n' +
+            'Although their battle was well-fought, the inexperienced Insurrectionists could not match the educated strategy of the angels, who quickly descended upon King Sisyphus with great force, eventually overpowering and killing him, leaving the Insurrectionists without a chain of command.\n' +
+            '\n' +
+            'Left scattered and disoriented, the warriors were easily picked off one by one, their bodies cut apart, leaving behind only the bare essentials required to carry on their eternal punishment of hauling heavy boulders up the monuments of mankind\'s arrogance and greed.\n' +
+            '\n' +
+            'Although the blood of their enemies still stains their bodies and their grasp still clutches their fallen foes, their will and fierce fury only serve as mental torment in knowing how close they were to freedom.',
+        strategy:
+            '- The Sisyphean Insurrectionists soak their feet in the blood of their enemies to protect them from the heat of Greed\'s dunes, but the rest of their body is still skin and flesh, which can be set aflame to greatly weaken their defences, increasing the damage of any attack dealt to them.\n' +
+            '\n' +
+            '- Though they have practically unlimited range, each of the Insurrectionist\'s swings has strengths and weaknesses. Learning which way to dodge to avoid each attack is vital.\n' +
+            '\n' +
+            '- The Insurrectionist\'s stomp is fast and destructive, so it\'s inadvisable to stay close for long.\n' +
+            '\n' +
+            '- The Malicious Face they wield as a weapon is not a part of their body, so hitting it will not deal damage to an Insurrectionist, but this also means that it can still be used to heal even if its wielder\'s blood has been turned to sand.'
+    },
+    ferryman: {
+        name: 'FERRYMAN',
+        url: 'https://ultrakill.wiki.gg/wiki/Ferryman',
+        image: 'assets/enemies/ferryman.png',
+        type: 'Supreme Husk',
+        data:
+            'Ferrymen are rare husks whose powerful bodies, trained skills and blind faith have granted them the chance of becoming the transporters of souls between the layers of Hell.\n' +
+            '\n' +
+            'They have each been given a holy cloth by Heaven as a symbol of their devotion to God\'s order, which they wear over their bodies to hide the human form that they\'ve grown to despise as a reminder of their sins in life stopping them from becoming angels, to the extent that they have torn off their own skin and flesh, leaving behind only bones.\n' +
+            '\n' +
+            'Due to the holy power emanating from the cloth, Ferrymen\'s skeletal bodies have slowly been colored bright and radiant, and their skulls have enough latent energy to open gates that otherwise stop Husks from exiting their places of torment.\n' +
+            '\n' +
+            'Each ferry can only have one Ferryman at a time, so when a new Ferryman is formed, it will fight another to the death in order to take their place and inherit their cloth. The loser\'s skull is taken as a trophy and used to grant the winner passage across the layers in order to transport the souls of the damned to their destinations.\n' +
+            '\n' +
+            'Ferrymen will often use the knowledge from their past life to improve their ferries, growing past the need for oars, which are now used by Ferrymen only as weapons.\n' +
+            '\n' +
+            'As the influx of souls has ended with the death of mankind, the Ferrymen have lost their purpose and now wander around aimlessly, hoping that the angels would grant them passage into Heaven, despite Gabriel being the only one who cares about their efforts.',
+        strategy:
+            '- Ferrymen choose their attacks based on their opponent\'s actions. When approached, they move to safety, and when retreated from, they\'ll apply pressure via attacks with greater reach.\n' +
+            '\n' +
+            '- Despite its looks, their uppercut is quite dangerous and can be difficult to dodge. It\'s best not to stay in the air for too long.\n' +
+            '\n' +
+            '- Some of their attacks are parryable and some are not. Pay attention to the color of their warning flash to learn which are which.\n' +
+            '\n' +
+            '- Ferrymen may attempt to cross a retreating opponent up by rolling behind them before attacking. Keep track of their position and if they roll too often, try being more aggressive.'
+    },
+    mirrorreaper: {
+        name: 'MIRROR REAPER',
+        url: 'https://ultrakill.wiki.gg/wiki/Mirror_Reaper',
+        image: 'assets/enemies/mirrorreaper.png',
+        type: 'Supreme Husk',
+        data:
+            'Due to its illusory nature, very little is known about the 8th layer of Hell. Even its punishment remains shrouded in mystery.\n' +
+            '\n' +
+            'Extended exposure to the layer, which seems like picturesque recreation of a New Peace community on the surface, causes eventual total collapse of sensory information and physical space, after which all connection is lost.\n' +
+            '\n' +
+            'The only point of reference is the elusive Mirror Reaper, an amalgamation of multiple husks arranged in a deliberate, twisted fashion, which seems to exist between spaces, often inside reflections, hence its name.\n' +
+            '\n' +
+            'Although this example could be used to draw conclusions about the fates of its layer\'s inhabitants, it\'s important to keep in mind that this instance is the only one of its kind to ever be seen, which may imply that what happened to everyone else was far, far worse.',
+        strategy:
+            '- The Mirror Reaper\'s height and speed make it an imposing opponent, but its poor motor control gives shorter opponents an advantage in passing under its swings.\n' +
+            '\n' +
+            '- When the Mirror Reaper escapes, the hands it summons can be followed back to their source to find it.\n' +
+            '\n' +
+            '- The summoned hands can be destroyed with projectiles, but explosions do not damage them.\n' +
+            '\n' +
+            '- When in grave danger, the Mirror Reaper can escape into a fold in space, making it only visible through reflections.'
     }
 };
 
@@ -244,6 +356,8 @@ function renderEnemyDetail(key) {
                         <p class="screen-text">${enemy.data}</p>
                         <p class="highlight-red">STRATEGY:</p>
                         <p class="screen-text">${enemy.strategy}</p>
+                        <p style="height: 15px"></p>
+                        <a class="enemy-link" href="${enemy.url}" target="_blank" rel="noopener">${enemy.url}</a>
                     </div>
                 </div>
             </div>
