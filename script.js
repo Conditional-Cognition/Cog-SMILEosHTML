@@ -1,15 +1,4 @@
 // noinspection SpellCheckingInspection
-
-window.addEventListener('load', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const tab = urlParams.get('tab');
-
-    if (tab === 'socials') {
-        renderSocialsScreen();
-        subTitleText.textContent = 'Socials';
-    }
-});
-
 const buttons = document.querySelectorAll('.os-button');
 
 buttons.forEach(button => {
@@ -437,3 +426,35 @@ const weaponsButton = document.querySelector('.os-button[data-target="weapons"]'
 if (weaponsButton) {
     weaponsButton.addEventListener('click', () => renderWeaponsScreen(activeWeaponCategory));
 }
+
+window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+
+    if (tab === 'socials') {
+        renderSocialsScreen();
+        subTitleText.textContent = 'Socials';
+    } else if (tab === 'enemies') {
+        renderEnemiesScreen();
+        subTitleText.textContent = 'Enemies';
+    } else if (tab === 'weapons') {
+        renderWeaponsScreen();
+        renderWeaponVariantList();
+        renderWeaponCategoryNav();
+        subTitleText.textContent = 'Weapons';
+    }
+});
+if (window.location.hash === '#socials') {
+    renderSocialsScreen();
+    subTitleText.textContent = 'Socials';
+} else if (window.location.hash === '#enemies') {
+    renderEnemiesScreen();
+    subTitleText.textContent = 'Enemies';
+} else if (window.location.hash === '#weapons') {
+    renderWeaponsScreen();
+    subTitleText.textContent = 'Weapons';
+}
+document.getElementById('external-socials-btn').addEventListener('click', () => {
+    renderSocialsScreen();
+    subTitleText.textContent = 'Socials';
+});

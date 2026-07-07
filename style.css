@@ -696,3 +696,25 @@ body {
     height: 340px;
     overflow-y: scroll;
 }
+
+#external-socials-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #8b1111;
+    text-decoration: underline;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 9999;
+    transition: color 0.15s ease;
+}
+
+#external-socials-btn:hover {
+    color: #da2222;
+}
