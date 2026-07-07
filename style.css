@@ -1,4 +1,12 @@
-/* Base Reset and Center Positioning */
+.brand-area,.control-btn {
+    position: relative;
+    cursor: pointer
+}
+
+.brand-area,.inner-screen,.os-button,.weapons-header {
+    text-align: center
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,32 +15,32 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    user-select: none;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    user-select: none
 }
 
-/* Background Crimson Aura Glow */
+.left-pane,.smile-os-window {
+    display: flex;
+    flex-direction: column
+}
+
 .glow-container {
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 80px 20px rgba(139, 0, 0, 0.45);
+    box-shadow: 0 0 80px 20px rgba(139,0,0,.45)
 }
 
-/* Outer Window Frame */
 .smile-os-window {
     width: 600px;
     height: 480px;
     background-color: #2b2b2b;
     border: 4px solid #1a1a1a;
-    box-shadow: inset 1px 1px 2px #555, inset -1px -1px 2px #000;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    box-shadow: inset 1px 1px 2px #555,inset -1px -1px 2px #000;
+    overflow: hidden
 }
 
-/* Glossy Gradient Red Title Bars */
-.main-titlebar, .sub-titlebar {
-    background: linear-gradient(to bottom, #9e1b1b 0%, #731010 40%, #540808 100%);
+.main-titlebar,.sub-titlebar {
+    background: linear-gradient(to bottom,#9e1b1b 0,#731010 40%,#540808 100%);
     border-bottom: 3px solid #141414;
     padding: 6px 12px;
     display: flex;
@@ -40,13 +48,13 @@ body {
     align-items: center;
     color: #e0e0e0;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 500
 }
 
 .title-left {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 6px
 }
 
 .smiley-icon {
@@ -58,13 +66,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 11px;
+    font-size: 11px
 }
 
-/* Window Control Buttons (Inset Squares with Symbols) */
-.window-controls {
+.weapon-cycle-controls,.window-controls {
     display: flex;
-    gap: 4px;
+    gap: 4px
 }
 
 .control-btn {
@@ -73,21 +80,17 @@ body {
     background-color: #1c1a1a;
     border: 1px solid #444;
     border-radius: 3px;
-    box-shadow: inset 1px 1px 2px #000;
-    position: relative;
-    cursor: pointer;
+    box-shadow: inset 1px 1px 2px #000
 }
 
-/* Lower split panes area */
 .interface-body {
     display: flex;
     flex: 1;
     background-color: #212121;
     padding: 10px;
-    gap: 10px;
+    gap: 10px
 }
 
-/* Left Sidebar Menu Frame */
 .left-pane {
     width: 160px;
     background-color: #1c1c1c;
@@ -95,111 +98,93 @@ body {
     border-radius: 4px;
     box-shadow: inset -1px -1px 2px #333;
     padding: 15px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: center
 }
 
-/* SmileOS Text Logo Styling */
+.brand-area.showing-image .logo-text-wrap,.logo-image {
+    display: none
+}
+
 .brand-area {
-    text-align: center;
     margin-bottom: 25px;
-    position: relative;
-    width: 100%;
-    cursor: pointer;
+    width: 100%
 }
 
 .logo-image {
-    display: none;
     width: 120px;
     height: 40px;
     margin: 0 auto;
     image-rendering: pixelated;
-    image-rendering: crisp-edges;
+    image-rendering: crisp-edges
 }
 
-.brand-area.showing-image .logo-text-wrap {
-    display: none;
+.os-button,.weapon-thumb {
+    image-rendering: pixelated
 }
 
 .brand-area.showing-image .logo-image {
-    display: block;
+    display: block
 }
 
 .logo-white {
-    color: #ffffff;
+    color: #fff;
     font-size: 26px;
-    font-weight: bold;
-    letter-spacing: -1px;
+    font-weight: 700;
+    letter-spacing: -1px
 }
 
 .logo-sub {
     color: #d12828;
     font-size: 11px;
-    font-weight: bold;
-    margin-left: 2px;
+    font-weight: 700;
+    margin-left: 2px
 }
 
-/* Rainbow underline bar under the header */
 .rainbow-swoosh {
     height: 4px;
     width: 80%;
-    margin: 4px auto 0 auto;
-    background: linear-gradient(to right, #ff3333, #ff9933, #33cc33, #3399ff, #9933ff);
-    border-radius: 2px;
+    margin: 4px auto 0;
+    background: linear-gradient(to right,#f33,#f93,#3c3,#39f,#93f);
+    border-radius: 2px
 }
 
-/* Skeuomorphic Rounded Inset Menu Buttons */
 .button-list {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px
 }
 
-/* Authentic Pixelated SmileOS Button scaling */
 .os-button {
     width: 100%;
     height: 44px;
-    color: #aaaaaa;
+    color: #aaa;
     font-size: 13px;
     font-weight: 500;
-    text-align: center;
     cursor: pointer;
-
-    /* Completely wipe out default borders and backgrounds */
     border: none;
     background-color: transparent;
-
-    /* Map texture asset natively */
     background-image: url('assets/SmileOS_2_Button_Wide.png');
-    background-size: 100% 100%; /* Stretches the asset perfectly across the shape */
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-
-    /* CRUCIAL FOR RETRO GAME ASSETS: Keeps pixels sharp when scaled up */
-    image-rendering: pixelated;
     image-rendering: crisp-edges;
-
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 8px;
-    transition: filter 0.1s;
+    transition: filter .1s
 }
 
-/* Hover brightness focus glow */
 .os-button:hover {
     filter: brightness(1.2);
-    color: #ffffff;
+    color: #fff
 }
 
-/* Switches texture ONLY while the mouse button is physically held down */
-.os-button:active {
-    color: #ffffff;
-    background-image: url('assets/SmileOS_2_Button_Wide_Pressed.png');
+.os-button:active,.weapon-category-btn.active-tab {
+    color: #fff;
+    background-image: url('assets/SmileOS_2_Button_Wide_Pressed.png')
 }
 
-/* Right Main Display Window Section */
 .right-pane {
     flex: 1;
     background-color: #1a1a1a;
@@ -207,15 +192,14 @@ body {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .sub-titlebar {
     font-size: 12px;
-    padding: 4px 8px;
+    padding: 4px 8px
 }
 
-/* Flat Matte CRT Inner Box Screen */
 .inner-screen {
     flex: 1;
     background-color: #0a0a0a;
@@ -226,20 +210,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: center
+}
+
+.enemy-grid-btn,.enemy-grid-locked,.weapon-row {
+    background-color: #141414
 }
 
 .screen-text {
     color: #9c9c9c;
     font-size: 14px;
-    line-height: 1.5;
-    margin: 0 0 15px 0;
-}
-
-.highlight-red {
-    color: #da2222;
-    font-weight: bold;
+    margin: 0 0 0;
 }
 
 .cheat-code {
@@ -247,80 +228,69 @@ body {
     font-family: monospace;
     font-size: 16px;
     letter-spacing: 2px;
-    margin: 10px 0 25px 0;
-    font-weight: bold;
+    margin: 10px 0 25px;
+    font-weight: 700
 }
 
 .sub-text {
-    font-size: 13px;
+    font-size: 13px
 }
 
-/* Enemy roster grid, shown inside the CRT screen */
 .enemy-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 6px;
     width: 100%;
     max-height: 240px;
     overflow-y: scroll;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
 .enemy-grid-btn {
-    aspect-ratio: 1 / 1;
-    background-color: #141414;
+    aspect-ratio: 1/1;
     background-size: cover;
     background-position: center;
     border: 2px solid #333;
     border-radius: 3px;
     cursor: pointer;
     padding: 0;
-    transition: border-color 0.1s, filter 0.1s;
+    transition: border-color .1s,filter .1s
 }
 
 .enemy-grid-btn:hover {
-    filter: brightness(1.15);
+    filter: brightness(1.15)
 }
 
 .enemy-grid-btn.active-tab {
-    border-color: #da2222;
+    border-color: #da2222
 }
 
 .enemy-grid-locked {
-    aspect-ratio: 1 / 1;
-    background-color: #141414;
+    aspect-ratio: 1/1;
     border: 2px dashed #333;
     border-radius: 3px;
-    color: #555555;
+    color: #555;
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 700;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center
 }
 
 .inner-screen.top-anchored {
-    justify-content: flex-start;
+    justify-content: flex-start
 }
 
-/* Weapons tab left-pane: category header + button list stand in for the brand/nav */
 .weapons-header {
-    color: #ffffff;
+    color: #fff;
     font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 15px;
+    font-weight: 700;
+    margin-bottom: 15px
 }
 
-.weapon-category-btn.active-tab {
-    color: #ffffff;
-    background-image: url('assets/SmileOS_2_Button_Wide_Pressed.png');
-}
-
-/* Weapons tab right-pane: stretch full width instead of centering, footer pinned to bottom */
 .inner-screen.weapons-mode {
     align-items: stretch;
-    justify-content: flex-start;
+    justify-content: flex-start
 }
 
 .weapon-variant-list {
@@ -328,24 +298,23 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    overflow-y: auto;
+    overflow-y: auto
 }
 
 .weapon-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #141414;
     border: 1px solid #262626;
     border-radius: 4px;
-    padding: 8px 10px;
+    padding: 8px 10px
 }
 
 .weapon-order-controls {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .weapon-order-btn {
@@ -358,21 +327,21 @@ body {
     color: #888;
     cursor: pointer;
     padding: 0;
-    border-radius: 2px;
+    border-radius: 2px
 }
 
-.weapon-order-btn:hover {
-    color: #ffffff;
-    border-color: #da2222;
+.enemy-back-btn:hover,.weapon-cycle-btn:hover,.weapon-footer-btn:hover,.weapon-order-btn:hover {
+    color: #fff;
+    border-color: #da2222
 }
 
 .weapon-slot-number {
     font-size: 20px;
-    font-weight: bold;
-    color: #666666;
+    font-weight: 700;
+    color: #666;
     width: 18px;
     text-align: center;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .weapon-thumb {
@@ -382,30 +351,33 @@ body {
     background-color: #0a0a0a;
     border: 1px solid #262626;
     border-radius: 3px;
-    image-rendering: pixelated;
     image-rendering: crisp-edges;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .weapon-info-text {
     flex: 1;
     min-width: 0;
-    text-align: left;
+    text-align: left
 }
 
 .weapon-name {
     margin: 0;
-    color: #ffffff;
-    font-weight: bold;
+    color: #fff;
+    font-weight: 700;
     font-size: 13px;
-    /*noinspection CssNonIntegerLengthInPixels*/
-    letter-spacing: 0.5px;
+    letter-spacing: .5px
+}
+
+.enemy-back-btn,.weapon-footer-btn,.weapon-status-btn {
+    background-color: #1c1a1a;
+    font-weight: 500
 }
 
 .weapon-substatus {
-    margin: 2px 0 0 0;
-    color: #888888;
-    font-size: 10px;
+    margin: 2px 0 0;
+    color: #888;
+    font-size: 10px
 }
 
 .weapon-row-right {
@@ -413,47 +385,35 @@ body {
     flex-direction: column;
     align-items: flex-end;
     gap: 6px;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .weapon-status-btn {
     display: inline-block;
-    background-color: #1c1a1a;
     border: 1px solid #444;
-    color: #dddddd;
+    color: #ddd;
     font-size: 10px;
     padding: 5px 10px;
-    border-radius: 3px;
-    font-weight: 500;
+    border-radius: 3px
 }
 
 .weapon-status-btn.weapon-status-alternate {
     color: #da2222;
-    font-weight: bold;
+    font-weight: 700
 }
 
 .weapon-status-btn.weapon-status-unequipped {
-    color: #888888;
-}
-
-.weapon-cycle-controls {
-    display: flex;
-    gap: 4px;
+    color: #888
 }
 
 .weapon-cycle-btn {
     background-color: #1c1a1a;
     border: 1px solid #333;
-    color: #888888;
+    color: #888;
     font-size: 10px;
     padding: 2px 7px;
     border-radius: 3px;
-    cursor: pointer;
-}
-
-.weapon-cycle-btn:hover {
-    color: #ffffff;
-    border-color: #da2222;
+    cursor: pointer
 }
 
 .weapon-footer {
@@ -461,24 +421,17 @@ body {
     gap: 10px;
     width: 100%;
     margin-top: auto;
-    padding-top: 12px;
+    padding-top: 12px
 }
 
 .weapon-footer-btn {
     flex: 1;
-    background-color: #1c1a1a;
     border: 1px solid #444;
-    color: #cccccc;
+    color: #ccc;
     padding: 10px;
     border-radius: 4px;
     font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.weapon-footer-btn:hover {
-    color: #ffffff;
-    border-color: #da2222;
+    cursor: pointer
 }
 
 .enemy-detail-page {
@@ -486,7 +439,7 @@ body {
     align-items: flex-start;
     gap: 15px;
     width: 100%;
-    text-align: left;
+    text-align: left
 }
 
 .enemy-detail-image {
@@ -496,7 +449,7 @@ body {
     border: 2px solid #333;
     border-radius: 4px;
     image-rendering: pixelated;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .enemy-detail-panel {
@@ -504,37 +457,30 @@ body {
     flex-direction: column;
     gap: 10px;
     flex: 1;
-    min-width: 0;
+    min-width: 0
 }
 
 .enemy-detail-panel .enemy-name {
     margin: 0;
-    font-size: 15px;
+    font-size: 15px
 }
 
 .enemy-detail-panel .screen-text {
     text-align: left;
     margin: 0;
-    overflow-wrap: break-word;
+    overflow-wrap: break-word
 }
 
 .enemy-back-btn {
     align-self: flex-start;
     margin-top: 20px;
-    background-color: #1c1a1a;
-    color: #aaaaaa;
+    color: #aaa;
     border: 1px solid #444;
     border-radius: 4px;
     padding: 6px 18px;
     font-size: 12px;
-    font-weight: 500;
     cursor: pointer;
-    transition: color 0.1s, border-color 0.1s;
-}
-
-.enemy-back-btn:hover {
-    color: #ffffff;
-    border-color: #da2222;
+    transition: color .1s,border-color .1s
 }
 
 .enemy-link {
@@ -542,42 +488,211 @@ body {
     font-family: monospace;
     font-size: 13px;
     text-decoration: none;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .enemy-link:hover {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
-/* Handles switching the left pane into an edge-to-edge sub-window structure */
 .left-pane.weapons-mode {
     padding: 0;
-    align-items: stretch;
+    align-items: stretch
 }
 
-/* Restores layout padding for the inner side menu buttons safely under the titlebar */
 .left-pane-content {
     padding: 15px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
+    flex: 1
 }
 
-/* Make buttons sleeker and thinner ONLY on the weapons terminal screen */
 .left-pane.weapons-mode .os-button {
     height: 30px;
     font-size: 12px;
-    margin-bottom: 0; /* Clear baseline margin overrides to rely purely on the grid gaps */
+    margin-bottom: 0
 }
 
-/* Creates an empty layout void exactly equal to one thin button (30px) + menu list gap (8px) */
 .weapon-nav-spacer {
     height: 38px;
-    width: 100%;
+    width: 100%
 }
 
-/* Ensures the back button takes up full width below the spacer */
+#screen-content,.enemy-detail-panel {
+    height: 100%;
+    overflow-y: auto
+}
+
 .weapon-back-btn {
-    width: 100%;
+    width: 100%
+}
+
+#screen-content::-webkit-scrollbar {
+    width: 8px
+}
+
+#screen-content::-webkit-scrollbar-track {
+    background: #1a1a1a
+}
+
+#screen-content::-webkit-scrollbar-thumb {
+    background: #444;
+    border: 1px solid #000
+}
+
+#screen-content::-webkit-scrollbar-thumb:hover {
+    background: #666
+}
+
+.enemy-detail-panel {
+    color: #ccc;
+    font-family: 'Courier New',Courier,monospace
+}
+
+.detail-header {
+    color: #f33;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: block
+}
+
+.screen-text {
+    line-height: 1;
+    white-space: pre-line;
+}
+
+.enemy-detail-panel {
+    padding: 0;
+    display: flex;
+    flex-direction: column
+}
+
+.enemy-detail-panel p {
+    margin: 0;
+    padding: 0 0;
+}
+
+.highlight-red {
+    color: #f33;
+    font-weight: 700;
+    margin-top: 15px!important;
+    margin-bottom: 5px!important
+}
+
+.enemy-detail-panel::-webkit-scrollbar {
+    width: 8px
+}
+
+.enemy-detail-panel::-webkit-scrollbar-thumb {
+    background: #444
+}
+
+.screen-text {
+    white-space: pre-line;
+    /* This renders \n as a new line */
+    word-wrap: break-word;
+    /* Ensures long lines wrap properly */
+    margin-bottom: 10px;
+}
+
+.inner-screen {
+    overflow: hidden;
+    /* Keep the CRT border look */
+    display: flex;
+    flex-direction: column;
+}
+
+.enemy-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 113%;
+    overflow: hidden;
+    /* Prevents double scrollbars */
+}
+
+/* Make the page the main scrollable area */
+.enemy-detail-page {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+    /* This enables the scrollbar */
+    padding: 10px;
+    gap: 15px;
+    align-items: flex-start;
+    /* Keeps content at the top */
+}
+
+/* Ensure the panel takes up all available space but lets the page handle scrolling */
+.enemy-detail-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: min-content;
+    /* This is the key: forces the panel to be as tall as its content */
+}
+
+/* Back button sits underneath the scrolling content */
+.enemy-back-btn {
+    margin-top: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Custom scrollbar styling specifically for the detail panel */
+.enemy-detail-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.enemy-detail-panel::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+.enemy-detail-panel::-webkit-scrollbar-thumb {
+    background: #444;
+    border: 1px solid #000;
+}
+
+.enemy-detail-panel::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Container holds everything */
+.enemy-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Page holds image + text, enables internal scroll */
+.enemy-detail-page {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    gap: 15px;
+}
+
+.enemy-detail-panel {
+    flex: 1;
+    overflow-y: visible;
+}
+
+.enemy-back-btn {
+    flex-shrink: 0;
+    margin-top: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.screen-text {
+    white-space: pre-line;
+    line-height: 1.4;
+}
+.enemy-text {
+    width: 200px;
+    height: 340px;
+    overflow-y: scroll;
 }

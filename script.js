@@ -1,5 +1,14 @@
-// Grab all the navigation buttons
 // noinspection SpellCheckingInspection
+
+window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+
+    if (tab === 'socials') {
+        renderSocialsScreen();
+        subTitleText.textContent = 'Socials';
+    }
+});
 
 const buttons = document.querySelectorAll('.os-button');
 
@@ -10,6 +19,11 @@ buttons.forEach(button => {
             renderCyberGrind();
         } else if (target === 'sandbox') {
             renderSandbox();
+        } else if (target === 'socials') {
+            renderSocialsScreen();
+        }
+        else if (target === 'enemies') {
+            renderEnemiesScreen();
         }
     });
 });
@@ -53,6 +67,7 @@ function resetToTipOfDay() {
 document.getElementById('main-close-btn').addEventListener('click', () => location.reload());
 document.getElementById('sub-close-btn').addEventListener('click', resetToTipOfDay);
 
+
 // --- Logo click toggle: swap between the custom text logo and the real image ---
 // Delegated on the left-pane container itself (rather than .brand-area directly)
 // since the weapons screen replaces the left-pane's innerHTML entirely.
@@ -61,28 +76,81 @@ leftPane.addEventListener('click', (e) => {
     if (brand) brand.classList.toggle('showing-image');
 });
 
-const enemyData = {
+const socialData = {
     artfight: {
         name: 'ARTFIGHT',
         url: 'https://artfight.net/~Cdtnl_Cognition',
-        image: 'assets/enemies/artfight.png',
+        image: 'assets/socials/artfight.png',
         description: 'I do low poly, 3D modelling of characters, mine and yours.'
     },
     youtube: {
         name: 'YOUTUBE',
         url: 'https://www.youtube.com/@StorageUnitNo.199',
-        image: 'assets/enemies/youtube.png',
+        image: 'assets/socials/youtube.png',
         description: 'Short and Long videos of varied games (WIP)'
     },
     github: {
         name: 'GITHUB',
         url: 'https://github.com/Conditional-Cognition/',
-        image: 'assets/enemies/github.png',
+        image: 'assets/socials/github.png',
         description: 'Small mods, most WIP, and other assets I create.'
     }
 };
 
-function renderEnemyScreen(activeKey = null) {
+const enemyData = {
+    filth: {
+        name: 'FILTH',
+        url: 'https://ultrakill.wiki.gg/wiki/Filth',
+        image: 'assets/enemies/filth.webp',
+        type: 'Lesser Husk',
+        data: 'Husks are physical manifestations of the souls of the damned. The physical form is based on the value of the original soul, which is determined by the strength of its will and its prevalence in public consciousness: the living souls that remember it. Filth are the lowest form of Husk, whose souls were too weak and unimportant to even form a complete physical body. Even among Husks, they have the lowest intelligence, driven purely by hunger.',
+        strategy:
+            '- Most weapons are easily capable of taking down Filth, but their powerful jaws and sheer numbers can overwhelm a target quickly if underestimated.\n' +
+            '\n' +
+            '- Explosives are the most effective way to take down swarms, but any weapon that can hit more than one target will be efficient.'
+    },
+    stray: {
+        name: 'STRAY',
+        url: 'https://ultrakill.wiki.gg/wiki/Stray',
+        image: 'assets/enemies/stray.png',
+        type: 'Lesser Husk',
+        data:
+            'While their tall stature may seem intimidating, Strays are afraid of most danger and will try to stay at a safe distance, only attacking via projectiles formed with Hell Energy.\n' +
+            '\n' +
+            'Although controlling and manifesting this energy is a complicated task, Strays have very low intelligence and are only able to do so via pure instinct.\n' +
+            '\n' +
+            'Nevertheless, humans were unable to replicate this level of accuracy and control, particularily the Stray’s ability to cause the energy orbs to selectively ignore other Husks.\n',
+        strategy:
+            '- Most weapons will be effective against them, but a Revolver headshot is the quickest and surest way to eliminate a Stray.\n' +
+            '\n' +
+            '- Due to their static nature and slow rate of attacking, they are an excellent target for projectile parrying.'
+    }
+};
+
+function renderSocialsScreen(activeKey = null) {
+    const realSlots = Object.keys(socialData).map(key => `
+        <button class="enemy-grid-btn${key === activeKey ? ' active-tab' : ''}"
+                style="background-image: url('${socialData[key].image}')"
+                data-enemy="${key}"
+                aria-label="${socialData[key].name}">
+        </button>
+    `).join('');
+
+    // Extra locked-looking tiles so the grid reads as "more to come", same as the in-game bestiary
+    const lockedSlots = Array(3).fill('<div class="enemy-grid-locked">?</div>').join('');
+
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_enemy.svg" style="width: 16px; height: 16px;" alt="enemy icon">`;
+    subTitleText.textContent = 'Socials';
+
+    screenContent.classList.add('top-anchored');
+    screenContent.innerHTML = `<div class="enemy-grid">${realSlots}${lockedSlots}</div>`;
+
+    screenContent.querySelectorAll('.enemy-grid-btn').forEach(btn => {
+        btn.addEventListener('click', () => renderSocialDetail(btn.dataset.enemy));
+    });
+}
+
+function renderEnemiesScreen(activeKey = null) {
     const realSlots = Object.keys(enemyData).map(key => `
         <button class="enemy-grid-btn${key === activeKey ? ' active-tab' : ''}"
                 style="background-image: url('${enemyData[key].image}')"
@@ -94,7 +162,7 @@ function renderEnemyScreen(activeKey = null) {
     // Extra locked-looking tiles so the grid reads as "more to come", same as the in-game bestiary
     const lockedSlots = Array(3).fill('<div class="enemy-grid-locked">?</div>').join('');
 
-    subIcon.textContent = '☠';
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_enemy.svg" style="width: 16px; height: 16px;" alt="enemy icon">`;
     subTitleText.textContent = 'Enemies';
 
     screenContent.classList.add('top-anchored');
@@ -105,8 +173,8 @@ function renderEnemyScreen(activeKey = null) {
     });
 }
 
-function renderEnemyDetail(key) {
-    const enemy = enemyData[key];
+function renderSocialDetail(key) {
+    const enemy = socialData[key];
     subIcon.textContent = '🔍';
     subTitleText.textContent = enemy.name;
 
@@ -122,13 +190,40 @@ function renderEnemyDetail(key) {
         </div>
         <button class="enemy-back-btn" id="enemy-back-btn">Back</button>
     `;
+    document.getElementById('enemy-back-btn').addEventListener('click', () => renderEnemiesScreen(key));
+}
 
-    document.getElementById('enemy-back-btn').addEventListener('click', () => renderEnemyScreen(key));
+function renderEnemyDetail(key) {
+    const enemy = enemyData[key];
+    if (!enemy) return;
+
+    subIcon.textContent = '🔍';
+    subTitleText.textContent = enemy.name;
+
+    screenContent.innerHTML = `
+        <div class="enemy-detail-wrapper">
+            <div class="enemy-detail-page">
+                <img class="enemy-detail-image" src="${enemy.image}" alt="">
+                <div class="enemy-detail-panel">
+                    <div class="enemy-text">
+                        <p class="highlight-red">TYPE:</p>
+                        <p>${enemy.type}</p>
+                        <p class="highlight-red">DATA:</p>
+                        <p class="screen-text">${enemy.data}</p>
+                        <p class="highlight-red">STRATEGY:</p>
+                        <p class="screen-text">${enemy.strategy}</p>
+                    </div>
+                </div>
+            </div>
+            <button class="enemy-back-btn" id="enemy-back-btn">Back</button>
+        </div>
+    `;
+    document.getElementById('enemy-back-btn').addEventListener('click', () => renderEnemiesScreen());
 }
 
 const enemiesButton = document.querySelector('.os-button[data-target="enemies"]');
 if (enemiesButton) {
-    enemiesButton.addEventListener('click', () => renderEnemyScreen());
+    enemiesButton.addEventListener('click', () => renderEnemiesScreen());
 }
 
 const weaponCategories = {
