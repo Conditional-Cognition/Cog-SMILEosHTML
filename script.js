@@ -452,6 +452,8 @@ if (window.location.hash === '#socials') {
     subTitleText.textContent = 'Enemies';
 } else if (window.location.hash === '#weapons') {
     renderWeaponsScreen();
+    renderWeaponVariantList();
+    renderWeaponCategoryNav();
     subTitleText.textContent = 'Weapons';
 }
 document.getElementById('external-socials-btn').addEventListener('click', () => {
