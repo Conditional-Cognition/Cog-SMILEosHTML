@@ -192,7 +192,10 @@ function renderEnemyDetail(key) {
     screenContent.innerHTML = `
         <div class="enemy-detail-wrapper">
             <div class="enemy-detail-page">
-                <img class="enemy-detail-image" src="${enemy.image}" alt="">
+                <div class='enemy-display'>
+                    <img class="enemy-detail-image" src="${enemy.image}" alt="">
+                    <button class="enemy-back-btn" id="enemy-back-btn">Back</button>
+                </div>
                 <div class="enemy-detail-panel">
                     <div class="enemy-text">
                         <p class="highlight-red">TYPE:</p>
@@ -204,7 +207,6 @@ function renderEnemyDetail(key) {
                     </div>
                 </div>
             </div>
-            <button class="enemy-back-btn" id="enemy-back-btn">Back</button>
         </div>
     `;
     document.getElementById('enemy-back-btn').addEventListener('click', () => renderEnemiesScreen());

@@ -680,6 +680,11 @@ body {
     overflow-y: visible;
 }
 
+.enemy-display {
+    width: 134px;
+    align-items: flex-start;
+}
+
 .enemy-back-btn {
     flex-shrink: 0;
     margin-top: 10px;
@@ -692,7 +697,7 @@ body {
     line-height: 1.4;
 }
 .enemy-text {
-    width: 200px;
+    width: 199px;
     height: 340px;
     overflow-y: scroll;
 }
