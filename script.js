@@ -265,6 +265,42 @@ const enemyData = {
             '- The summoned hands can be destroyed with projectiles, but explosions do not damage them.\n' +
             '\n' +
             '- When in grave danger, the Mirror Reaper can escape into a fold in space, making it only visible through reflections.'
+    },
+    drone: {
+        name: 'DRONE',
+        url: 'https://ultrakill.wiki.gg/wiki/Drone',
+        image: 'assets/enemies/drone.png',
+        type: 'Lesser Machine',
+        data:
+            'A mass-produced security device built as both a surveillance camera and a security guard.\n' +
+            '\n' +
+            'Though originally built to only use non-lethal ammunition, they have scavenged parts from the defunct machines on the surface for greater efficiency at collecting blood.\n' +
+            '\n' +
+            'Curious by nature, but to keep production costs low, their intelligence is very limited.',
+        strategy:
+            '- Due to their light weight, physical projectiles such as nails will push them around, making them harder to deal consistent damage to.\n' +
+            '\n' +
+            '- On death they will make a last ditch effort to harm their opponent with a self-destruct, but powerful single attacks and explosives will make them explode instantly.\n' +
+            '\n' +
+            '- Punching a drone will redirect their suicide dive, making them a high-risk offensive opportunity.\n' +
+            '\n' +
+            '- Their scanning mechanism makes a chirping sound, which can be listened for to make them easier to track down, as their flight and small size can lead them to hard to reach places.'
+    },
+    streetcleaner: {
+        name: 'STREETCLEANER',
+        url: 'https://ultrakill.wiki.gg/wiki/Streetcleaner',
+        image: 'assets/enemies/streetcleaner.png',
+        type: 'Lesser Machine',
+        data:
+            'Originally built as a way to purify the tainted air of cities after the climate catastrophe, Streetcleaners were made obsolete during the New Peace, and were repurposed as scouts for Hell expeditions.\n' +
+            '\n' +
+            'However, their urge to clean remained, and after the fall of mankind, they began burning any organic matter they came across in an effort to purify the world.',
+        strategy:
+            '- Due to their combat experience, they can be tricky to take down with projectiles or explosives.\n' +
+            '\n' +
+            '- The canister on their back is a major weakpoint that can be shattered with a precision shot, such as a Marksman coin ricochet from behind.\n' +
+            '\n' +
+            '- Point-blank attacks can also be very efficient, but must be performed quickly to avoid the fire of their flamethrowers.'
     }
 };
 
@@ -301,7 +337,7 @@ function renderEnemiesScreen(activeKey = null) {
     `).join('');
 
     // Extra locked-looking tiles so the grid reads as "more to come", same as the in-game bestiary
-    const lockedSlots = Array(22).fill('<div class="enemy-grid-locked">?</div>').join('');
+    const lockedSlots = Array(20).fill('<div class="enemy-grid-locked">?</div>').join('');
 
     subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_enemy.svg" style="width: 16px; height: 16px;" alt="enemy icon">`;
     subTitleText.textContent = 'Enemies';
