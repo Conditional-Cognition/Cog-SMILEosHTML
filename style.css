@@ -164,7 +164,7 @@ body {
     cursor: pointer;
     border: none;
     background-color: transparent;
-    background-image: url('assets/SmileOS_2_Button_Wide.png');
+    background-image: url('assets/Custom_button.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -172,6 +172,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 8px;
+    filter: pixelate();
     transition: filter .1s
 }
 
@@ -182,7 +183,7 @@ body {
 
 .os-button:active,.weapon-category-btn.active-tab {
     color: #fff;
-    background-image: url('assets/SmileOS_2_Button_Wide_Pressed.png')
+    background-image: url('assets/Custom_button_pressed.svg')
 }
 
 .right-pane {
