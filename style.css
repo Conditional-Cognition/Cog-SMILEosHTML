@@ -242,7 +242,7 @@ body {
     grid-template-columns: repeat(3,1fr);
     gap: 6px;
     width: 100%;
-    max-height: 240px;
+    max-height: 300px;
     overflow-y: scroll;
     margin-bottom: 20px
 }
@@ -331,7 +331,7 @@ body {
     border-radius: 2px
 }
 
-.enemy-back-btn:hover,.weapon-cycle-btn:hover,.weapon-footer-btn:hover,.weapon-order-btn:hover {
+.enemy-back-btn:hover,.image-back-btn:hover,.weapon-cycle-btn:hover,.weapon-footer-btn:hover,.weapon-order-btn:hover {
     color: #fff;
     border-color: #da2222
 }
@@ -370,7 +370,7 @@ body {
     letter-spacing: 0.5px
 }
 
-.enemy-back-btn,.weapon-footer-btn,.weapon-status-btn {
+.enemy-back-btn,.image-back-btn,.weapon-footer-btn,.weapon-status-btn {
     background-color: #1c1a1a;
     font-weight: 500
 }
@@ -473,6 +473,17 @@ body {
 }
 
 .enemy-back-btn {
+    align-self: flex-start;
+    margin-top: 20px;
+    color: #aaa;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color .1s,border-color .1s
+}
+.image-back-btn {
     align-self: flex-start;
     margin-top: 20px;
     color: #aaa;
@@ -707,7 +718,7 @@ body {
 .enemy-text {
     width: 199px;
     height: 340px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #external-socials-btn {

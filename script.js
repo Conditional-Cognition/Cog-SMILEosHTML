@@ -136,7 +136,7 @@ function renderSocialsScreen(activeKey = null) {
         </button>
     `).join('');
 
-    const lockedSlots = Array(3).fill('<div class="enemy-grid-locked">?</div>').join('');
+    const lockedSlots = Array(2).fill('<div class="enemy-grid-locked">?</div>').join('');
 
     subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_enemy.svg" style="width: 16px; height: 16px;" alt="enemy icon">`;
     subTitleText.textContent = 'Socials';
@@ -180,6 +180,27 @@ function renderSocialDetail(key) {
     subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_info.png" style="width: 16px; height: 16px;" alt="weapons icon">`;
     subTitleText.textContent = 'Social Data';
 
+    let mediaContentHTML = '';
+    if (enemy.type === 'both') {
+        mediaContentHTML = `
+            <a class="enemy-link" href="${enemy.url}" target="_blank" rel="noopener">${enemy.url}</a>
+            <p style="height: 15px"></p>
+            <button class="image-preview-btn" id="open-attachment-btn" style="background: none; border: none; padding: 0; cursor: pointer; width: 100%; text-align: left;">
+                <img class="enemy-detail-image" src="assets/personal/${enemy.picture}" alt="${enemy.name} attachment" style="max-width: 100%; height: auto; display: block; margin-top: 10px;">
+            </button>
+        `;
+    } else if (enemy.type === 'picture') {
+        mediaContentHTML = `
+            <button class="image-preview-btn" id="open-attachment-btn" style="background: none; border: none; padding: 0; cursor: pointer; width: 100%; text-align: left;">
+                <img class="enemy-detail-image" src="assets/personal/${enemy.picture}" alt="${enemy.name} attachment" style="max-width: 100%; height: auto; display: block; margin-top: 10px;">
+            </button>
+        `;
+    } else if (enemy.type === 'url') {
+        mediaContentHTML = `
+            <a class="enemy-link" href="${enemy.url}" target="_blank" rel="noopener">${enemy.url}</a>
+        `;
+    }
+
     screenContent.innerHTML = `
         <div class="enemy-detail-wrapper">
             <div class="enemy-detail-page">
@@ -193,22 +214,47 @@ function renderSocialDetail(key) {
                         <p class="highlight-red">DESCRIPTION:</p>
                         <p class="screen-text">${enemy.description}</p>
                         <p class="highlight-red">ACCESS:</p>
-                        <p class="screen-text">${enemy.access}</p>
+                        <p class="screen-text">${enemy.access || ''}</p>
                         <p style="height: 15px"></p>
-                        <a class="enemy-link" href="${enemy.url}" target="_blank" rel="noopener">${enemy.url}</a>
+                        ${mediaContentHTML}
                     </div>
                 </div>
             </div>
         </div>
     `;
+
     document.getElementById('enemy-back-btn').addEventListener('click', () => renderSocialsScreen(key));
+
+    const attachmentBtn = document.getElementById('open-attachment-btn');
+    if (attachmentBtn) {
+        attachmentBtn.addEventListener('click', () => renderSocialImageView(key));
+    }
+}
+
+function renderSocialImageView(key) {
+    const enemy = socialData[key];
+    if (!enemy) return;
+
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_info.png" style="width: 16px; height: 16px;" alt="information icon">`;
+    subTitleText.textContent = `${enemy.name} - Attachment`;
+
+    screenContent.innerHTML = `
+        <div class="enemy-detail-wrapper" style="padding: 10px; box-sizing: border-box; justify-content: space-between;">
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center; overflow-y: auto; padding-bottom: 10px;">
+                <img src="assets/personal/${enemy.picture}" alt="${enemy.name} full view" style="max-width: 100%; max-height: 290px; object-fit: contain;">
+            </div>
+            <button class="image-back-btn" id="image-view-back-btn" style="width: fit-content; align-self: flex-start;">Back</button>
+        </div>
+    `;
+
+    document.getElementById('image-view-back-btn').addEventListener('click', () => renderSocialDetail(key));
 }
 
 function renderEnemyDetail(key) {
     const enemy = enemyData[key];
     if (!enemy) return;
 
-    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_info.png" style="width: 16px; height: 16px;" alt="weapons icon">`;
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_info.png" style="width: 16px; height: 16px;" alt="information icon">`;
     subTitleText.textContent = 'Enemy Data';
 
     screenContent.innerHTML = `
@@ -239,15 +285,26 @@ function renderEnemyDetail(key) {
 
 function renderWeaponCategoryNav(activeKey) {
     const items = Object.keys(weaponCategories).map(key => `
-        <button class="os-button weapon-category-btn${key === activeKey ? ' active-tab' : ''}" data-category="${key}">
+        <button class="os-button weapon-category-btn${key === activeKey ? ' active-tab' : ''}" 
+                data-category="${key}" 
+                style="margin-bottom: 2px; padding: 4px 8px;">
             ${weaponCategories[key].name}
         </button>
     `).join('');
 
     leftPane.innerHTML = `
-        <div class="weapons-header">Weapons</div>
-        <nav class="button-list weapon-category-list">${items}</nav>
+        <div class="weapons-header" style="margin-bottom: 6px;">Weapons</div>
+        <nav class="button-list weapon-category-list" style="display: flex; flex-direction: column; gap: 1px;">
+            ${items}
+            <button class="os-button weapon-category-btn" id="weapon-nav-back-btn" style="margin-top: 8px; padding: 4px 8px;">
+                Back
+            </button>
+        </nav>
     `;
+
+    document.getElementById('weapon-nav-back-btn').addEventListener('click', () => {
+        resetToTipOfDay();
+    });
 }
 
 function renderWeaponVariantList(categoryKey) {
@@ -272,21 +329,21 @@ function renderWeaponVariantList(categoryKey) {
         }
 
         return `
-            <div class="weapon-row" data-row="${rowPosition}">
-                <div class="weapon-order-controls">
-                    <button class="weapon-order-btn up" data-row="${rowPosition}" aria-label="Move number up">▲</button>
-                    <button class="weapon-order-btn down" data-row="${rowPosition}" aria-label="Move number down">▼</button>
+            <div class="weapon-row" data-row="${rowPosition}" style="margin-bottom: 4px; padding: 4px; height: 50px;">
+                <div class="weapon-order-controls" style="gap: 1px;">
+                    <button class="weapon-order-btn up" data-row="${rowPosition}" aria-label="Move number up" style="font-size: 10px; height: 16px;">▲</button>
+                    <button class="weapon-order-btn down" data-row="${rowPosition}" aria-label="Move number down" style="font-size: 10px; height: 16px;">▼</button>
                 </div>
-                <div class="weapon-slot-number">${displayNumber}</div>
-                <img class="weapon-thumb" src="${weaponImageSrc}" alt="${weaponNameDisplay}">
-                <div class="weapon-info-text">
-                    <p class="weapon-name">${weaponNameDisplay}</p>
+                <div class="weapon-slot-number" style="font-size: 18px; margin-left: 4px; margin-right: 4px;">${displayNumber}</div>
+                <img class="weapon-thumb" src="${weaponImageSrc}" alt="${weaponNameDisplay}" style="max-height: 42px; object-fit: contain;">
+                <div class="weapon-info-text" style="margin-left: 6px;">
+                    <p class="weapon-name" style="font-size: 13px; margin: 0;">${weaponNameDisplay}</p>
                 </div>
                 <div class="weapon-row-right">
-                    <span class="weapon-status-btn${statusClass}">${statusText}</span>
-                    <div class="weapon-cycle-controls">
-                        <button class="weapon-cycle-btn prev" data-row="${rowPosition}" aria-label="Previous equip status">«</button>
-                        <button class="weapon-cycle-btn next" data-row="${rowPosition}" aria-label="Next equip status">»</button>
+                    <span class="weapon-status-btn${statusClass}" style="font-size: 11px; padding: 2px 6px;">${statusText}</span>
+                    <div class="weapon-cycle-controls" style="margin-left: 4px;">
+                        <button class="weapon-cycle-btn prev" data-row="${rowPosition}" aria-label="Previous equip status" style="padding: 2px 4px;">«</button>
+                        <button class="weapon-cycle-btn next" data-row="${rowPosition}" aria-label="Next equip status" style="padding: 2px 4px;">»</button>
                     </div>
                 </div>
             </div>
@@ -294,10 +351,10 @@ function renderWeaponVariantList(categoryKey) {
     }).join('');
 
     screenContent.innerHTML = `
-        <div class="weapon-variant-list">${rows}</div>
-        <div class="weapon-footer">
-            <button class="weapon-footer-btn">Info</button>
-            <button class="weapon-footer-btn">Color</button>
+        <div class="weapon-variant-list" style="gap: 2px; padding: 4px; max-height: 260px; overflow-y: auto;">${rows}</div>
+        <div class="weapon-footer" style="margin-top: 4px; padding-top: 4px; gap: 10px;">
+            <button class="weapon-footer-btn" style="padding: 4px 12px; font-size: 12px;">Info</button>
+            <button class="weapon-footer-btn" style="padding: 4px 12px; font-size: 12px;">Color</button>
         </div>
     `;
 
@@ -373,7 +430,9 @@ function renderWeaponsScreen(categoryKey) {
 const socialData = {
     artfight: {
         name: 'ARTFIGHT',
+        type: 'url',
         url: 'https://artfight.net/~Cdtnl_Cognition',
+        picture: '',
         image: 'assets/socials/artfight.png',
         description:
             'I do low poly, 3D modelling of characters, mine and yours.',
@@ -382,7 +441,9 @@ const socialData = {
     },
     youtube: {
         name: 'YOUTUBE',
+        type: 'url',
         url: 'https://www.youtube.com/@StorageUnitNo.199',
+        picture: '',
         image: 'assets/socials/youtube.png',
         description:
             'Short and Long videos of varied games (WIP)',
@@ -391,7 +452,9 @@ const socialData = {
     },
     github: {
         name: 'GITHUB',
+        type: 'url',
         url: 'https://github.com/Conditional-Cognition/',
+        picture: '',
         image: 'assets/socials/github.png',
         description:
             'Small Minecraft mods, most WIP, and other assets I create.',
@@ -399,6 +462,21 @@ const socialData = {
             'I often put up any medium to large projects in the works.\n' +
             '\n' +
             'If you have any complimentary ideas, feel free to contact me via Discord.'
+    },
+    example: {
+        name: 'EXAMPLE',
+        type: 'both',
+        url: 'https://spinningrat.online/',
+        picture: 'img.png',
+        image: 'assets/socials/efa.png',
+        description:
+            'HOW TO USE\n'+
+            '\n' +
+            'yeah, you can go to this website\'s link to make your own SmileOS 2.0 socials page. You should probably use the dedicated template though... (WIP)',
+        access:
+            'Leave either picture or url blank if you dont want them.\n' +
+            '\n' +
+            'Everything else should be at least something, but it doesnt have to be :)'
     }
 };
 
