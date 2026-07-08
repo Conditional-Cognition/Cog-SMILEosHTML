@@ -366,7 +366,7 @@ body {
     color: #fff;
     font-weight: 700;
     font-size: 13px;
-    letter-spacing: .5px
+    letter-spacing: 0.5px
 }
 
 .enemy-back-btn,.weapon-footer-btn,.weapon-status-btn {
@@ -729,4 +729,25 @@ body {
 
 #external-socials-btn:hover {
     color: #da2222;
+}
+
+.control-btn {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    display: inline-block;
+    background: none;
+    border: none;
+    filter: brightness(0.7);
+}
+
+.control-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.control-btn:hover {
+    filter: brightness(1);
 }
