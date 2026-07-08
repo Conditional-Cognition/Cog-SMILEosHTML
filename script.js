@@ -301,6 +301,110 @@ const enemyData = {
             '- The canister on their back is a major weakpoint that can be shattered with a precision shot, such as a Marksman coin ricochet from behind.\n' +
             '\n' +
             '- Point-blank attacks can also be very efficient, but must be performed quickly to avoid the fire of their flamethrowers.'
+    },
+    swordsmachine: {
+        name: 'SWORDSMACHINE',
+        url: 'https://ultrakill.wiki.gg/wiki/Swordsmachine',
+        image: 'assets/enemies/swordsmachine.png',
+        type: 'Greater Machine',
+        data:
+            'Its original form is unrecognisable after years of scavenging scrap and rebuilding itself, but among scrapheads, the Swordsmachine is quite famous due to its combat prowess and selfmade form, ugly to most but beautiful to enthusiasts, spawning many copycats.\n' +
+            '\n' +
+            'It wields a selfmade sword with a motor on it that, when revved, will heat the blade, cutting through most organic matter with ease.\n' +
+            '\n' +
+            'Due to its possessive hoarding behavior, it\'s one of the few machines still capable of vocalization -- an ability most have discarded for more efficient resource management.',
+        strategy:
+            '- Despite its excellent performance against Hell\'s denizens, its design does not take into account extremely mobile opponents, so the best way to avoid its blade is to jump out of its vertical range.\n' +
+            '\n' +
+            '- Its motorized sword makes for predictable attacks, making the Swordsmachine an excellent target for parrying.\n' +
+            '\n' +
+            '- Although its use of ranged weapons is primitive at best, its sword throws can be unexpectedly accurate thanks to its mastery of the weapon.'
+    },
+    mindflayer: {
+        name: 'MINDFLAYER',
+        url: 'https://ultrakill.wiki.gg/wiki/Mindflayer',
+        image: 'assets/enemies/mindflayer.png',
+        type: 'Greater Machine',
+        data:
+            'Rare but extremely dangerous, the Mindflayer is a machine that has adapted and mastered the use of Hell Energy alongside its own technological prowess.\n' +
+            '\n' +
+            'The machine itself is only the top part of its apparent body, the rest of which is a plastic shell in the form of a human, which they seem to have built themselves.\n' +
+            '\n' +
+            'The plastic body serves no function and is only for aesthetic purposes.\n' +
+            '\n' +
+            'Despite it being a waste of resources, Mindflayers will use everything in its power to protect the plastic body from harm, even if that means destroying itself in the process.\n' +
+            '\n' +
+            'Mindflayers seem to prefer a female form, though very rare occasions of male forms have also been recorded.',
+        strategy:
+            '- When encountering a Mindflayer, it\'s imperative to keep track of their actions either through visuals or audio.\n' +
+            '\n' +
+            '- Due to their homing projectiles being fired in a burst, a safe explosive such as a Knuckleblaster blastwave is the most efficient in deflecting them.\n' +
+            '\n' +
+            '- Their instant teleportation can make consistent positional advantage quite difficult, but a Screwdriver drill will temporarily stop them from teleporting.'
+    },
+    sentry: {
+        name: 'SENTRY',
+        url: 'https://ultrakill.wiki.gg/wiki/Sentry',
+        image: 'assets/enemies/sentry.png',
+        type: 'Greater Machine',
+        data:
+            'One of the many war machines created during the Final War. Although there were attempts to find new purpose for them during the New Peace, their streamlined design made them unable to be repurposed until the start of the Hell expeditions.\n' +
+            '\n' +
+            'Their extremely powerful legs and feet allow them to dig into the ground, making them immovable by most forces and allowing them to easily line up any shot without interruption.\n' +
+            '\n' +
+            'Despite their size, they were built to be extremely light, which when combined with the power of their legs, allows them to move at extremely fast speeds. Such power and lightness have made their legs one of the most sought after parts by scrapheads.\n' +
+            '\n' +
+            'Most machines will only render a simplified approximation of their visual surroundings for faster processing speed, but Sentries use full renders instead, giving them perfect accuracy even over extremely long distances.',
+        strategy:
+            '- Due to their powerful legs, once they\'ve dug into the ground to aim, they can no longer move.\n' +
+            '\n' +
+            '- Once dug in, the only ways to interrupt their attack are: Shooting them with the Electric Railcannon, hitting their antenna with the Revolver, launching them with the ground slam wave or punching them with the Knuckleblaster.\n' +
+            '\n' +
+            '- As long as they haven\'t dug in, their light weight makes them easy to launch and keep in the air where they are harmless.\n' +
+            '\n' +
+            '- A good way to disable a Sentry for a longer period of time is to shoot nails into them with the Nailgun and then placing a magnet in a nearby wall or ceiling, which will pull them once they\'ve been knocked off balance.'
+    },
+    gutterman: {
+        name: 'GUTTERMAN',
+        url: 'https://ultrakill.wiki.gg/wiki/Gutterman',
+        image: 'assets/enemies/gutterman.png',
+        type: 'Greater Machine',
+        data:
+            'Built in the early days of the Final War, the Guttermen were one of the first successful experiments in using blood as a fuel source, as well as the first automatons to be deployed in wide-scale conflict.\n' +
+            '\n' +
+            'During the war\'s first phase, an era of trench warfare, these seemingly unstoppable walls were airdropped into enemy trenches, which they would then slowly and systematically clear out as all opposing soldiers would have to choose between being minced by the Gutterman, or running out of the trench and getting mowed down by machine gun fire.\n' +
+            '\n' +
+            'Researchers had not yet found a way to keep the blood inside a machine fresh, so a live fuel source was strapped inside, kept alive by minimal life support, before the Guttermen were welded shut. Although publically these fuel sources were claimed to be volunteer patriots, most were deserters, battle-fatigued returnees or prisoners of war.\n' +
+            '\n' +
+            'Forces from far beyond took notice of the cruelty man was capable of, and the suffering of these human blood supplies served as an inspiration for the creation of the Mannequins.',
+        strategy:
+            '- The shield is a Gutterman\'s main defence. Destroying it with the Knuckleblaster will cause them to take increased damage.\n' +
+            '\n' +
+            '- Although slow at first, their tracking will improve the longer they maintain line of sight. It\'s best not to stay out in the open for too long.\n' +
+            '\n' +
+            '- Once the shield has been broken, the Gutterman\'s punches can be parried, which resets their tracking.\n' +
+            '\n' +
+            '- A Gutterman\'s corpse can be ground slammed to cause a large explosion that damages surrounding enemies and launches the attacker high in the air.'
+    },
+    guttertank: {
+        name: 'GUTTERTANK',
+        url: 'https://ultrakill.wiki.gg/wiki/Guttertank',
+        image: 'assets/enemies/guttertank.png',
+        type: 'Greater Machine',
+        data:
+            'As Guttermen singlehandedly ended the trench warfare era of the Final War, armies scrambled to create countermeasures, leading to the creation of more machines of war.\n' +
+            '\n' +
+            'Built from the foundations of Guttermen to save time, Guttertanks were equipped with highly efficient explosives and arms capable of damaging and destroying thick armor. The slow, lumbering walls that once dominated the field had now become obsolete.\n' +
+            '\n' +
+            'As human soldiers had quickly become useless in war, utterly outclassed by machines, they were almost entirely phased out. This lead to the second era of the Final War, where machines fought machines in a back-and-forth tide as new designs were phased in and out at a feverish pace, each designed specifically to counter the last.\n' +
+            '\n' +
+            'Although at first the soldiers celebrated returning home, they soon found that the pointless, endless arms race left little in its wake. All resources were used on machines of war, and impoverished civilians had to struggle to survive. Home was just another battlefield, a war of all against all.\n' +
+            '\n' +
+            'Conquest leads to war — War leads to famine — Famine leads to...',
+        strategy:
+            '- The Guttertank\'s punch is deceptively fast and powerful. The best way to get close safely is to bait a punch before closing the gap.\n' +
+            '\n' +
+            '- Due to reused technology, the Freezeframe Rocket Launcher is capable of freezing Guttertank rockets too, making them temporarily incapable of long range combat.'
     }
 };
 
