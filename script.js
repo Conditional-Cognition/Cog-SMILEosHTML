@@ -33,13 +33,11 @@ function renderSandbox() {
     leftPane.innerHTML = leftPaneDefaultHTML;
 }
 
-// --- Enemies tab: socials roster ---
 const subTitleText = document.getElementById('sub-title-text');
 const subIcon = document.getElementById('sub-icon');
 const screenContent = document.getElementById('screen-content');
 const leftPane = document.querySelector('.left-pane');
 
-// Snapshot the original Tip of the Day markup and left-pane nav before anything overwrites them
 const tipOfDayHTML = screenContent.innerHTML;
 const leftPaneDefaultHTML = leftPane.innerHTML;
 
@@ -456,8 +454,8 @@ function renderEnemiesScreen(activeKey = null) {
 
 function renderSocialDetail(key) {
     const enemy = socialData[key];
-    subIcon.textContent = '🔍';
-    subTitleText.textContent = enemy.name;
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_info.png" style="width: 16px; height: 16px;" alt="weapons icon">`;
+    subTitleText.textContent = 'Social Data';
 
     screenContent.classList.add('top-anchored');
     screenContent.innerHTML = `
@@ -478,14 +476,15 @@ function renderEnemyDetail(key) {
     const enemy = enemyData[key];
     if (!enemy) return;
 
-    subIcon.textContent = '🔍';
-    subTitleText.textContent = enemy.name;
+    subIcon.innerHTML = `<img src="assets/SmileOS_2_icon_info.png" style="width: 16px; height: 16px;" alt="weapons icon">`;
+    subTitleText.textContent = 'Enemy Data';
 
     screenContent.innerHTML = `
         <div class="enemy-detail-wrapper">
             <div class="enemy-detail-page">
                 <div class='enemy-display'>
                     <img class="enemy-detail-image" src="${enemy.image}" alt="">
+                    <p class="highlight-white">${enemy.name}</p> 
                     <button class="enemy-back-btn" id="enemy-back-btn">Back</button>
                 </div>
                 <div class="enemy-detail-panel">

@@ -581,6 +581,13 @@ body {
     margin-bottom: 5px!important
 }
 
+.highlight-white {
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 15px!important;
+    margin-bottom: 5px!important
+}
+
 .enemy-detail-panel::-webkit-scrollbar {
     width: 8px
 }
