@@ -12,4 +12,4 @@ SANDBOX MENU AND CYBERGRIND MENU STILL IN DEVELOPMENT
 
 WHOLE WEBSITE STILL IN DEVELOPMENT
 
-P.S: Other `.md` files are scattered around assets, find them for customisation instructions.
+P.S: Other `.md` files are scattered around, find them for customisation instructions.
