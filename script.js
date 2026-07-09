@@ -466,17 +466,11 @@ const socialData = {
     example: {
         name: 'EXAMPLE',
         type: 'both',
-        url: 'https://spinningrat.online/',
+        url: 'https://conditional-cognition.github.io/Cog-SMILEos-Socials/',
         picture: 'img.png',
         image: 'assets/socials/efa.png',
-        description:
-            'HOW TO USE\n'+
-            '\n' +
-            'yeah, you can go to this website\'s link to make your own SmileOS 2.0 socials page. You should probably use the dedicated template though... (WIP)',
-        access:
-            'Leave either picture or url blank if you dont want them.\n' +
-            '\n' +
-            'Everything else should be at least something, but it doesnt have to be :)'
+        description: 'HOW TO USE\n\ngo to this website\'s normal github link, and copy the thingo however you do, and edit the files to your liking to make your own SmileOS 2.0 socials page.',
+        access: 'When adding a socials entry, leave either \'picture\' or \'url\' blank if you dont want them.\n\nEverything else should be at least something, but it doesnt have to be :)'
     }
 };
 
